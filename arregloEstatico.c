@@ -10,6 +10,7 @@
 
 #include <stdio.h> //Definicion de la biblioteca "stdio.h"
 #include <string.h> //Definicion de la biblioteca "string.h"
+#define MAX 5       //
 
 /*
 	Name: Estructura principal
@@ -23,12 +24,12 @@
 
 */
 
-struct CompraDiscos
+typedef struct CompraDiscos
 {
     char cTitulo[32];
     int iCanciones;
     float fPrecio;
-} iaInfoDisco[3]; //arreglo en el que se guarda la informacion de cada disco
+} iaInfoDisco; //arreglo en el que se guarda la informacion de cada disco
 
 
 //Funcion principal
@@ -36,19 +37,6 @@ int main(){
 
     int iContador; //Variable que recorre el arreglo
     
-    //Se almacena la informacion en cada miembro de la estructura
-    strcpy(iaInfoDisco[0].cTitulo, "Rust in Peace");
-    iaInfoDisco[0].iCanciones = 12;
-    iaInfoDisco[0].fPrecio = 568.78;
-
-    strcpy(iaInfoDisco[1].cTitulo, "Hellboy");
-    iaInfoDisco[1].iCanciones = 15;
-    iaInfoDisco[1].fPrecio = 499.50;
-
-    strcpy(iaInfoDisco[2].cTitulo, "Bonded by blood");
-    iaInfoDisco[2].iCanciones = 8;
-    iaInfoDisco[2].fPrecio = 723.32;
-
     printf("\t|||Discos comprados|||");
     
     //estructura de control para imprimir la informacion de cada uno de los discos

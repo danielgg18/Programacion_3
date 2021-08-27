@@ -24,40 +24,41 @@
 
 */
 
-typedef struct CompraDiscos
+typedef struct 
 {
     char cTitulo[32];
     int iCanciones;
     float fPrecio;
-} 
+} CompraDiscos;
 
-typedef iaInfoDisco CompraDiscos;
+typedef CompraDiscos iaInfoDisco[MAX]; //Definimos un tipo de dato CompraDiscos y lo nombramos iaInfoDiscos con un tamaño MAX
+
 /*
 	Name: ingresa
 	Copyright: 
 	Author: 
 	Date: 18/08/21 11:30
 	Description: Funcion que inicializa un arreglo de MAX elementos en valores del 0 hasta MAX-1
-		Parametros: iaInfoDisco: arreglo de MAX elementos enteros
+		Parametros: aDisco: arreglo de MAX elementos enteros
 		Regresa: void
 */
 
 
-void ingresa (int iaInfoDisco[MAX])
+void ingresa (int iaInfoDisco aDisco)
 {
      int iIndice;   //Declaracion de una variable de tipo entero que sirve de indice de recorrido
      for (iIndice=0; iIndice<MAX; iIndice++){
 
          puts("\nIngresa el nombre del disco: ");
-         gets("%c", iaInfoDisco[iIndice].cTitulo);
+         gets(aDisco[iIndice].cTitulo);
          puts("\nIngresa el total de canciones: ");
-         scanf("%i", iaInfoDisco[iIndice].iCanciones);
+         scanf(aDisco[iIndice].iCanciones);
          puts("\nIngresa el precio del disco: ");
-         scanf("%f", iaInfoDisco[iIndice].fPrecio);
+         scanf("%f", &aDisco[iIndice].fPrecio);
      }
 }           
 
-void imprime(int iaInfoDisco[MAX])
+void imprime(int iaInfoDisco aDisco)
 {
     int iContador; //Variable que recorre el arreglo
     
@@ -67,18 +68,20 @@ void imprime(int iaInfoDisco[MAX])
     for ( iContador = 0; iContador < MAX; iContador++)
     {
         printf("\n***Disco %d***\n", iContador + 1);
-        printf("Nombre del disco: %s\n", iaInfoDisco[iContador].cTitulo);
-        printf("Num. de Canciones: %d\n", iaInfoDisco[iContador].iCanciones);
-        printf("Precio: %.2f\n", iaInfoDisco[iContador].fPrecio);
+        printf("Nombre del disco: %s\n", aDisco[iContador].cTitulo);
+        printf("Num. de Canciones: %d\n", aDisco[iContador].iCanciones);
+        printf("Precio: %.2f\n", aDisco[iContador].fPrecio);
     }
 }
 
 //Funcion principal
 int main(){
 
-    void ingresa(int iaInfoDisco[MAX]);
+    iaInfoDisco aDisco;
+    
+    void ingresa(aDisco);
 
-    void imprime(int iaInfoDisco[MAX]);
+    void imprime(aDisco);
 
 
 

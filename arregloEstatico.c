@@ -31,7 +31,7 @@ typedef struct CompraDiscos
     float fPrecio;
 } 
 
-typedef iaInfoDisco CompraDiscos
+typedef iaInfoDisco CompraDiscos;
 /*
 	Name: ingresa
 	Copyright: 
@@ -55,7 +55,7 @@ void ingresa (int iaInfoDisco[MAX])
          puts("\nIngresa el precio del disco: ");
          scanf("%f", iaInfoDisco[iIndice].fPrecio);
      }
-            
+}           
 
 void imprime(int iaInfoDisco[MAX])
 {

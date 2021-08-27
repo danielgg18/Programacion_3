@@ -44,21 +44,22 @@ typedef CompraDiscos iaInfoDisco[MAX]; //Definimos un tipo de dato CompraDiscos 
 */
 
 
-void ingresa (int iaInfoDisco aDisco)
+void ingresa (iaInfoDisco aDisco)
 {
      int iIndice;   //Declaracion de una variable de tipo entero que sirve de indice de recorrido
      for (iIndice=0; iIndice<MAX; iIndice++){
 
          puts("\nIngresa el nombre del disco: ");
+         fflush(stdin);
          gets(aDisco[iIndice].cTitulo);
          puts("\nIngresa el total de canciones: ");
-         scanf(aDisco[iIndice].iCanciones);
+         scanf("%i", &aDisco[iIndice].iCanciones);
          puts("\nIngresa el precio del disco: ");
          scanf("%f", &aDisco[iIndice].fPrecio);
      }
 }           
 
-void imprime(int iaInfoDisco aDisco)
+void imprime(iaInfoDisco aDisco)
 {
     int iContador; //Variable que recorre el arreglo
     

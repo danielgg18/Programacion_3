@@ -76,8 +76,9 @@ void imprime(int iaInfoDisco[MAX])
 //Funcion principal
 int main(){
 
-    
-    
+    void ingresa(int iaInfoDisco[MAX]);
+
+    void imprime(int iaInfoDisco[MAX]);
 
 
 

@@ -79,9 +79,9 @@ int main(){
 
     iaInfoDisco aDisco;
     
-    void ingresa(aDisco);
+    ingresa(aDisco);
 
-    void imprime(aDisco);
+    imprime(aDisco);
 
 
 

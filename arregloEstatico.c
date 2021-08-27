@@ -2,7 +2,7 @@
 	Name: arregloEstatico.c
 	Copyright: 
 	Author: Daniel García García
-	Date: 19/08/21 08:33
+	Date: 26/08/21 
 	Description: Programa de un arreglo estatico de estructuras
 		
     */

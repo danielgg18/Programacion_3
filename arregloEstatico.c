@@ -16,7 +16,7 @@
 	Name: Estructura principal
 	Copyright: 
 	Author: Daniel García García
-	Date: 19/08/21 08:33
+	Date: 26/08/21 
 	Description: Estructura que almacena los datos de cada disco
 		Parametros: cTitulo: titulo del disco
                     iCanciones: numero de canciones que hay en el disco
@@ -34,16 +34,14 @@ typedef struct
 typedef CompraDiscos iaInfoDisco[MAX]; //Definimos un tipo de dato CompraDiscos y lo nombramos iaInfoDiscos con un tamaño MAX
 
 /*
-	Name: ingresa
+	Name: Funcion ingresa
 	Copyright: 
-	Author: 
-	Date: 18/08/21 11:30
-	Description: Funcion que inicializa un arreglo de MAX elementos en valores del 0 hasta MAX-1
-		Parametros: aDisco: arreglo de MAX elementos enteros
-		Regresa: void
+	Author: Daniel Garcia
+	Date: 26/08/21 
+	Description: Solicita los datos del disco 
+        Parametros: aDisco: arreglo de MAX elementos enteros
+		Regresa: Un valor de tipo void
 */
-
-
 void ingresa (iaInfoDisco aDisco)
 {
      int iIndice;   //Declaracion de una variable de tipo entero que sirve de indice de recorrido
@@ -59,6 +57,15 @@ void ingresa (iaInfoDisco aDisco)
      }
 }           
 
+/*
+	Name: Funcion imprime
+	Copyright: 
+	Author: Daniel Garcia
+	Date: 26/08/21 
+	Description: Imprime los datos del disco 
+        Parametros: aDisco: arreglo de MAX elementos enteros
+		Regresa: Un valor de tipo void
+*/
 void imprime(iaInfoDisco aDisco)
 {
     int iContador; //Variable que recorre el arreglo
@@ -77,14 +84,12 @@ void imprime(iaInfoDisco aDisco)
 
 //Funcion principal
 int main(){
-
-    iaInfoDisco aDisco;
+    
+    //Variables locales
+    iaInfoDisco aDisco; //Declaramos la variable de aDisco de tipo iaInfoDisco que será el parámetro de las funciones
     
     ingresa(aDisco);
-
     imprime(aDisco);
-
-
 
 system("PAUSE"); //detiene la ejecucion del programa
 return 0;

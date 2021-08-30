@@ -76,7 +76,7 @@ void imprime(Alumno arreglo, int MAX)
         printf("Valor 2: %d\n", arreglo[iContador].Valor2);
         printf("Valor 3: %d\n", arreglo[iContador].Valor3);
         
-        Promedio = ((arreglo[iContador].Valor1 + arreglo[iContador].Valor2 + arreglo[iContador].Valor3)/3);
+        Promedio = ((float)(arreglo[iContador].Valor1 + arreglo[iContador].Valor2 + arreglo[iContador].Valor3)/3);
         printf("Promedio: %.2f\n", Promedio);
         
     }

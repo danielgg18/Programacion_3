@@ -78,3 +78,24 @@ void imprime(Alumno arreglo, int MAX)
     }
 }
 
+//Funcion principal
+int main(){
+    
+    //Variables locales
+    Alumno arreglo; //Declaramos la variable de arreglo de tipo Alumno que será el parámetro de las funciones
+    int iElementos;
+    
+    printf ("Cuantos elementos necesitas: ");
+    scanf ("%d",&iElementos);
+    
+    arreglo = (Alumno) malloc (sizeof(InfoAlumnos)*iElementos);
+
+    ingresa(arreglo, iElementos);
+    
+    imprime(arreglo, iElementos);
+
+free(arreglo);
+system("PAUSE"); //detiene la ejecucion del programa
+return 0;
+
+}

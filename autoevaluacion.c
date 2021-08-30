@@ -39,7 +39,7 @@ void ingresa (Alumno arreglo, int MAX)
      
      for (iIndice=0; iIndice < MAX; iIndice++){
 
-         puts("\nIngresa el nombre del Alumno: ");
+         printf("\nIngresa el nombre del Alumno: &d", iIndice + 1);
          fflush(stdin);
          gets(arreglo[iIndice].Nombre);
          puts("\nIngresa el primer valor del alumno: ");
@@ -71,7 +71,7 @@ void imprime(Alumno arreglo, int MAX)
     //estructura de control para imprimir la informacion de cada uno de los alumnos
     for ( iContador = 0; iContador < MAX; iContador++)
     {
-        printf("Nombre: %s\n", arreglo[iContador].Nombre);
+        printf("\nNombre: %s\n", arreglo[iContador].Nombre);
         printf("Valor 1: %d\n", arreglo[iContador].Valor1);
         printf("Valor 2: %d\n", arreglo[iContador].Valor2);
         printf("Valor 3: %d\n", arreglo[iContador].Valor3);

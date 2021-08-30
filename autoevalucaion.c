@@ -49,4 +49,32 @@ void ingresa (Alumno arreglo, int MAX)
          puts("\nIngresa el tercer valor del alumno: ");
          scanf("%i", &arreglo[iIndice].Valor3);
      }
-}           
+}
+
+/*
+	Name: Funcion imprime
+	Copyright: 
+	Author: Daniel Garcia
+	Date: 26/08/21 
+	Description: Imprime los datos del alumno
+        Parametros: 
+            arreglo: apuntador a un arreglo dinamico 
+            MAX: numero de elementos del arreglo dinamico 
+		Regresa: Un valor de tipo void
+*/
+void imprime(Alumno arreglo, int MAX)
+{
+    int iContador; //Variable que recorre el arreglo
+    
+    printf("\n\t|||Alumnos|||");
+    
+    //estructura de control para imprimir la informacion de cada uno de los alumnos
+    for ( iContador = 0; iContador < MAX; iContador++)
+    {
+        printf("Nombre: %s\n", arreglo[iContador].Nombre);
+        printf("Valor 1: %d\n", arreglo[iContador].Valor1);
+        printf("Valor 2: %d\n", arreglo[iContador].Valor2);
+        printf("Valor 3: %d\n", arreglo[iContador].Valor3);
+    }
+}
+

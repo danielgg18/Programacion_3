@@ -39,7 +39,7 @@ void ingresa (Alumno arreglo, int MAX)
      
      for (iIndice=0; iIndice < MAX; iIndice++){
 
-         printf("\nIngresa el nombre del Alumno: &d", iIndice + 1);
+         printf("\nIngresa el nombre del Alumno %d: ", iIndice + 1);
          fflush(stdin);
          gets(arreglo[iIndice].Nombre);
          puts("\nIngresa el primer valor del alumno: ");
@@ -56,7 +56,7 @@ void ingresa (Alumno arreglo, int MAX)
 	Copyright: 
 	Author: Daniel Garcia
 	Date: 26/08/21 
-	Description: Imprime los datos del alumno
+	Description: Imprime los datos del alumno y saca el promedio de los valores
         Parametros: 
             arreglo: apuntador a un arreglo dinamico 
             MAX: numero de elementos del arreglo dinamico 
@@ -65,9 +65,9 @@ void ingresa (Alumno arreglo, int MAX)
 void imprime(Alumno arreglo, int MAX)
 {
     int iContador; //Variable que recorre el arreglo
+    float Promedio; //Variable que guarda el promedio de cada alumno
     
     printf("\n\t|||Alumnos|||");
-    
     //estructura de control para imprimir la informacion de cada uno de los alumnos
     for ( iContador = 0; iContador < MAX; iContador++)
     {
@@ -75,6 +75,10 @@ void imprime(Alumno arreglo, int MAX)
         printf("Valor 1: %d\n", arreglo[iContador].Valor1);
         printf("Valor 2: %d\n", arreglo[iContador].Valor2);
         printf("Valor 3: %d\n", arreglo[iContador].Valor3);
+        
+        Promedio = ((arreglo[iContador].Valor1 + arreglo[iContador].Valor2 + arreglo[iContador].Valor3)/3);
+        printf("Promedio: %.2f\n", Promedio);
+        
     }
 }
 

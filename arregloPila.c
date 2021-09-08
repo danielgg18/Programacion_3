@@ -93,7 +93,7 @@ void push (int iInformacion, char sNombre[20], apNodo *tope) {
 
 
 
-void pop (nNodo **tope) {
+void pop (apNodo *tope) {
      
 }
 

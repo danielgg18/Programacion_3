@@ -56,17 +56,17 @@ int iTamanio_pila;
     scanf ("%d", &iTamanio_pila);
 
 
-    inicio = (nNodo *) malloc (sizeof (nNodo) *iTamanio_pila); 
+    inicio = (nNodo *) malloc (sizeof (nNodo) *iTamanio_pila); //Se reserva un espacio de memoria de nNodo * tamaño de la pila
     
-    tope = inicio + iTamanio_pila;
+    tope = inicio + iTamanio_pila;  //Se coloca el tope al final de la memoria
     
     printf ("Tope: %p\t Pila %p\n", tope, inicio);
      
-    push(10, &tope);
-    push(20, &tope);
-    push(30, &tope);
-    push(40, &tope);
-    push(50, &tope);
+    push(10, "Diez", &tope);
+    push(20, "Veinte", &tope);
+    push(30, "Treinta", &tope);
+    push(40, "Cuarenta", &tope);
+    push(50, "Cincuenta", &tope);
     
     printf ("Tope: %p\t Pila %p\n", tope, inicio);
 
@@ -75,11 +75,11 @@ int iTamanio_pila;
     pop(&tope);
     printf ("Tope: %p\t Pila %p\n", tope, inicio);
     
-    push(60, &tope);
+    push(60, "Sesenta", &tope);
 
     
     
-    free(inicio);    
+    free(inicio);
     system ("PAUSE");
        
 }

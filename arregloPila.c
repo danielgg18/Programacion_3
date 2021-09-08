@@ -5,9 +5,11 @@
 
 
 typedef struct {
+    int iInformacion;
     char sNombre[20];
-    int iValor;
 } nNodo;
+
+typedef nNodo *apNodo;
 
 /*
 	Name: pila_vacia
@@ -34,14 +36,20 @@ int pila_vacia () {
 	Author: Daniel Garcia
 	Date: 26/08/21 
 	Description: Funcion que verifica si la pila esta llena
-        Parametros: Ninguno
+        Parametros:
+            inicio: apuntador que apunta al ultimo elemento de la pila
+            tope: apuntador que apunta al final de la pila
 		Regresa:
-            VERDADERO si esta vacia la pila  
-            FALSO si no esta vacia
+            VERDADERO si esta llena la pila  
+            FALSO si no esta llena
 */
-int pila_llena () {
+int pila_llena (nNodo *inicio, nNodo *tope) {
 
-    /*Cuando la pila esta llena*/    
+   //si pila y tope apuntan al mismo lugar esta lleno
+    if(inicio == tope)
+        return VERDADERO;
+    else
+
     
 }
 
@@ -58,23 +66,42 @@ void ver_pila() {
 }
 
 
+/*
+	Name: push
+	Copyright: 
+	Author: Daniel Garcia
+	Date: 26/08/21 
+	Description: Funcion que almacena un elemento a la pila
+        Parametros:
+            iInformacion: entero que contiene el valor del primer campo
+            sNombre: cadena que contiene el valor del segundo campo
+            tope: apuntador a nNodo y pasado por referencia
+		Regresa:
+            VERDADERO si esta llena la pila  
+            FALSO si no esta llena
+*/
+void push (int iInformacion, char sNombre[20], apNodo *tope) {
 
-void push (int elemento, int **tope) {
-     
-     
+    //cuando la pila esta llena marcar overflow y de lo contrario hacer las instrucciones de abajo 
+
+    //if(pila_llena)
+
+    *tope->iInformacion= iInformacion;
+    strcpy(*tope->sNombre, sNombre);
+    tope ++;
 }
 
 
 
-void pop (int **tope) {
+void pop (nNodo **tope) {
      
 }
 
 
 main() {
 
-nNodo *inicio;
-nNodo *tope;
+apNodo inicio;
+apNodo tope;
 
 int iTamanio_pila;
 
@@ -82,7 +109,7 @@ int iTamanio_pila;
     scanf ("%d", &iTamanio_pila);
 
 
-    inicio = (nNodo *) malloc (sizeof (nNodo) *iTamanio_pila); //Se reserva un espacio de memoria de nNodo * tamaño de la pila
+    inicio = (apNodo) malloc (sizeof (nNodo) *iTamanio_pila); //Se reserva un espacio de memoria de nNodo * tamaño de la pila
     
     tope = inicio + iTamanio_pila;  //Se coloca el tope al final de la memoria
     

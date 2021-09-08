@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct {
+    char sNombre[20];
+    int iValor;
+} nNodo;
+
 int pila_vacia () {
 
     /*Cuando la pila esta vacia*/    
@@ -42,8 +47,8 @@ void pop (int **tope) {
 
 main() {
 
-int *pila;
-int *tope;
+nNodo *inicio;
+nNodo *tope;
 
 int iTamanio_pila;
 
@@ -51,11 +56,11 @@ int iTamanio_pila;
     scanf ("%d", &iTamanio_pila);
 
 
-    pila=(int *) malloc (sizeof (int) *iTamanio_pila);
+    inicio = (nNodo *) malloc (sizeof (nNodo) *iTamanio_pila); 
     
-    tope = pila+iTamanio_pila;
+    tope = inicio + iTamanio_pila;
     
-    printf ("Tope: %p\t Pila %p\n", tope, pila);
+    printf ("Tope: %p\t Pila %p\n", tope, inicio);
      
     push(10, &tope);
     push(20, &tope);
@@ -63,18 +68,18 @@ int iTamanio_pila;
     push(40, &tope);
     push(50, &tope);
     
-    printf ("Tope: %p\t Pila %p\n", tope, pila);
+    printf ("Tope: %p\t Pila %p\n", tope, inicio);
 
     
     pop(&tope);
     pop(&tope);
-    printf ("Tope: %p\t Pila %p\n", tope, pila);
+    printf ("Tope: %p\t Pila %p\n", tope, inicio);
     
     push(60, &tope);
 
     
     
-    free(pila);    
+    free(inicio);    
     system ("PAUSE");
        
 }

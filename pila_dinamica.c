@@ -1,9 +1,18 @@
+/*
+	Name:pila_dinamica.c 
+	Copyright: 
+	Author: 
+	Date: 17/09/21 11:50
+	Description: Ejemplo de pilas dinamicas trabajando elemento por elemento
+*/
+
+//Directivas del preprocesador
 #include <stdio.h>
 #include <stdlib.h>
  
 typedef struct nodo {
    int iValor;
-   struct nodo *siguiente;
+   struct nodo *siguiente;	//apuntador a un nodo
 } tipoNodo;
  
 typedef tipoNodo *pNodo;

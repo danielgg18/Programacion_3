@@ -153,7 +153,7 @@ void push (int elemento, char nombre[20], apNodo *pila, apNodo tope) {
 	 
 		printf("\tPUSH\t");
      	(*pila)->iElemento = elemento;
-		strcpy((*pila)->sNombre, nombre)
+		strcpy((*pila)->sNombre, nombre);
      	ver_tope(*pila);
 		(*pila)++; //sube un espacio el apuntador pila
  	}

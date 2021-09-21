@@ -1,7 +1,7 @@
 /*
 	Name: pila_arreglo_struct.c
 	Copyright: 
-	Author: Daniel Garcia Garcia
+	Author: Esther Martínez
 	Date: 09/09/21 21:29
 	Description: Programa que presenta una pila de una estructura
 					(struct) con un campo entero
@@ -17,10 +17,9 @@
 #define FALSO 0
 
 
-
 typedef struct {
 	int iElemento;
-    char sNombre[20];
+	char sNombre[20];
 }nNodo;
 
 typedef nNodo* apNodo;
@@ -28,7 +27,7 @@ typedef nNodo* apNodo;
 /*
 	Name: pila_vacia
 	Copyright: 
-	Author: Daniel García Garcia
+	Author: Esther Martínez
 	Date: 09/09/21 21:17
 	Description: Función que verifica si una pila está vacía
 		Parámetros: 
@@ -94,7 +93,7 @@ int pila_llena (apNodo pila, apNodo tope) {
 void ver_tope (apNodo pila) {
 
     /*Como ver tope*/    
-    printf("Tope: %i %s\tDireccion es: %p\n", pila->iElemento,pila->sNombre, pila ); 
+    printf("Tope: %i %s\tDireccion es: %p\n", pila->iElemento, pila->sNombre, pila ); 
 								
 }
 
@@ -144,7 +143,7 @@ void ver_pila(apNodo pila, apNodo tope, int iTamanio_pila) {
 			void
 			
 */
-void push (int elemento,char nombre[20], apNodo *pila, apNodo tope) {
+void push (int elemento, char nombre[20], apNodo *pila, apNodo tope) {
      
      if ( pila_llena(*pila,tope) == 1){
      	
@@ -154,7 +153,7 @@ void push (int elemento,char nombre[20], apNodo *pila, apNodo tope) {
 	 
 		printf("\tPUSH\t");
      	(*pila)->iElemento = elemento;
-        strcpy((*pila)->sNombre[20],nombre);
+		strcpy((*pila)->sNombre, nombre)
      	ver_tope(*pila);
 		(*pila)++; //sube un espacio el apuntador pila
  	}
@@ -207,10 +206,10 @@ int main() {
 	    printf ("Pila: %p\t Tope %p\n", pila, tope);
 	
 	    push(10,"Diez", &pila, tope);
-	    push(20,"Veinte", &pila, tope);
-	    push(30,"Treinta", &pila, tope);
-	    push(40,"Cuarenta", &pila, tope);
-	    push(50,"Cincuenta", &pila, tope);
+	    push(20, "Veinte", &pila, tope);
+	    push(30, "Treinta", &pila, tope);
+	    push(40, "Cuarenta", &pila, tope);
+	    push(50, "Cincuenta", &pila, tope);
 	    
 		ver_pila(pila,tope, iTamanio_pila);
 	
@@ -220,7 +219,7 @@ int main() {
 		pop(&pila);
 		ver_pila(pila,tope, iTamanio_pila);
 	    
-	    push(60,"Sesenta", &pila, tope);
+	    push(60, "Sesenta", &pila, tope);
 	
 	    ver_pila(pila,tope, iTamanio_pila);
 	    

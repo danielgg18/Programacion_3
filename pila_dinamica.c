@@ -60,7 +60,7 @@ void Push(pNodo *ultimo, int iValor, char nombre[20]) {
 		Regreso:
 			entero
 */
-int Pop(pNodo *pila) {
+int Pop(pNodo *pila, char cadena[20]) {
    pNodo nodo; /* variable auxiliar para manipular nodo */
    int iValor;      /* variable auxiliar para retorno */
    
@@ -70,7 +70,8 @@ int Pop(pNodo *pila) {
    /* Asignamos a pila toda la pila menos el primer elemento */
    *pila = nodo->siguiente;
    /* Guardamos el valor de retorno */
-   iValor = nodo->iValor; 
+   iValor = nodo->iValor;
+   strcpy(cadena,nodo->sNombre); 
    /* Borrar el nodo */
    free(nodo);
    return iValor;
@@ -79,21 +80,22 @@ int Pop(pNodo *pila) {
 //Funcion principal
 int main() {
    pNodo pila = NULL;
+   char sNombre[20];
  
    Push(&pila, 10, "Diez");
    Push(&pila, 20, "Veinte");
    Push(&pila, 30, "Treinta");
-   printf("Push: %i %s , Pop: %d\n",pila->iValor,pila->sNombre,Pop(&pila));
-   printf("Push: %i %s , Pop:%d\n",pila->iValor,pila->sNombre,Pop(&pila));
+   printf("Pop: %d %s \n",Pop(&pila,sNombre),sNombre);
+   printf("Pop: %d %s \n",Pop(&pila,sNombre),sNombre);
    Push(&pila, 40, "Cuarenta");
    Push(&pila, 50, "Cincuenta");
 
-   printf("Push: %i %s , Pop: %d\n",pila->iValor,pila->sNombre, Pop(&pila));
-   printf("Push: %i %s , Pop: %d\n", pila->iValor,pila->sNombre,Pop(&pila));
+   printf("Pop: %d %s \n",Pop(&pila,sNombre),sNombre);
+   printf("Pop: %d %s \n",Pop(&pila,sNombre),sNombre);
    Push(&pila, 60, "Sesenta");
-   printf("Push: %i %s , Pop: %d\n", pila->iValor,pila->sNombre,Pop(&pila));
-   printf("Push: %i %s , Pop: %d\n", pila->iValor,pila->sNombre,Pop(&pila));
-   printf("Push: %i %s , Pop: %d\n",pila->iValor,pila->sNombre, Pop(&pila));
+   printf("Pop: %d %s \n",Pop(&pila,sNombre),sNombre);
+   printf("Pop: %d %s \n",Pop(&pila,sNombre),sNombre);
+   //printf("Pop: %d %s \n",Pop(&pila,sNombre),sNombre);
    
 
    getche();

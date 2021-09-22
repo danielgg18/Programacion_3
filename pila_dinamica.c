@@ -19,7 +19,21 @@ typedef struct nodo {
  
 typedef tipoNodo *pNodo;
  
-/* Funciones con pilas: */
+/*
+	Name:Push 
+	Copyright: 
+	Author: 
+	Date: 17/09/21 11:50
+	Description: Funcion que agrega un elemento a la pila
+   Parámetros: 
+			ultimo: apuntador al último elemento de la pila 
+					POR REFERENCIA			
+         iValor: entero con el dato a ingresar
+			nombre: cadena de caracteres con el dato a ingresar
+		Regreso:
+			void
+*/
+
 void Push(pNodo *ultimo, int iValor, char nombre[20]) {
    pNodo nuevo;
  
@@ -34,6 +48,18 @@ void Push(pNodo *ultimo, int iValor, char nombre[20]) {
    *ultimo = nuevo;
 }
 
+/*
+	Name:Pop
+	Copyright: 
+	Author: 
+	Date: 17/09/21 11:50
+	Description: Funcion que elimina un elemento de la pila
+   Parámetros: 
+			pila: apuntador al último elemento de la pila 
+					POR REFERENCIA			
+		Regreso:
+			entero
+*/
 int Pop(pNodo *pila) {
    pNodo nodo; /* variable auxiliar para manipular nodo */
    int iValor;      /* variable auxiliar para retorno */
@@ -50,7 +76,7 @@ int Pop(pNodo *pila) {
    return iValor;
 } 
 
-
+//Funcion principal
 int main() {
    pNodo pila = NULL;
  

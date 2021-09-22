@@ -9,23 +9,26 @@
 //Directivas del preprocesador
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
  
 typedef struct nodo {
    int iValor;
+   char sNombre[20];
    struct nodo *siguiente;	//apuntador a un nodo
 } tipoNodo;
  
 typedef tipoNodo *pNodo;
  
 /* Funciones con pilas: */
-void Push(pNodo *ultimo, int iValor) {
+void Push(pNodo *ultimo, int iValor, char nombre[20]) {
    pNodo nuevo;
  
    /* Crear un nodo nuevo */
    nuevo = (pNodo)malloc(sizeof(tipoNodo));
    nuevo->iValor = iValor;
+   strcpy(nuevo->sNombre, nombre);
    
-   /* Añadimos la pila a continuación del nuevo nodo */
+   /* Aï¿½adimos la pila a continuaciï¿½n del nuevo nodo */
    nuevo->siguiente = *ultimo;
    /* Ahora, el comienzo de nuestra pila es en nuevo nodo */
    *ultimo = nuevo;
@@ -51,17 +54,17 @@ int Pop(pNodo *pila) {
 int main() {
    pNodo pila = NULL;
  
-   Push(&pila, 10);
-   Push(&pila, 20);
-   Push(&pila, 30);
+   Push(&pila, 10, "Diez");
+   Push(&pila, 20, "Veinte");
+   Push(&pila, 30, "Treinta");
+   printf("%d %s, ", Pop(&pila), pila->sNombre);
    printf("%d, ", Pop(&pila));
-   printf("%d, ", Pop(&pila));
-   Push(&pila, 40);
-   Push(&pila, 50);
+   Push(&pila, 40, "Cuarenta");
+   Push(&pila, 50, "Cincuenta");
 
    printf("%d, ", Pop(&pila));
    printf("%d, ", Pop(&pila));
-   Push(&pila, 60);
+   Push(&pila, 60, "Sesenta");
    printf("%d, ", Pop(&pila));
    printf("%d\n", Pop(&pila));
    printf("%d\n", Pop(&pila));

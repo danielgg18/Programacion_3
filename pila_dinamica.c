@@ -57,17 +57,17 @@ int main() {
    Push(&pila, 10, "Diez");
    Push(&pila, 20, "Veinte");
    Push(&pila, 30, "Treinta");
-   printf("%d %s, ", Pop(&pila), pila->sNombre);
-   printf("%d, ", Pop(&pila));
+   printf("Push: %i %s , Pop: %d\n",pila->iValor,pila->sNombre,Pop(&pila));
+   printf("Push: %i %s , Pop:%d\n",pila->iValor,pila->sNombre,Pop(&pila));
    Push(&pila, 40, "Cuarenta");
    Push(&pila, 50, "Cincuenta");
 
-   printf("%d, ", Pop(&pila));
-   printf("%d, ", Pop(&pila));
+   printf("Push: %i %s , Pop: %d\n",pila->iValor,pila->sNombre, Pop(&pila));
+   printf("Push: %i %s , Pop: %d\n", pila->iValor,pila->sNombre,Pop(&pila));
    Push(&pila, 60, "Sesenta");
-   printf("%d, ", Pop(&pila));
-   printf("%d\n", Pop(&pila));
-   printf("%d\n", Pop(&pila));
+   printf("Push: %i %s , Pop: %d\n", pila->iValor,pila->sNombre,Pop(&pila));
+   printf("Push: %i %s , Pop: %d\n", pila->iValor,pila->sNombre,Pop(&pila));
+   printf("Push: %i %s , Pop: %d\n",pila->iValor,pila->sNombre, Pop(&pila));
    
 
    getche();

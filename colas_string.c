@@ -157,7 +157,8 @@ int main(){
 
 		switch(eOpcion){
 			case 1: printf("Ingrese el nuevo elemento: \n");
-					scanf("%d", &eNumero);
+					fflush(stdin);
+                    scanf("%d", &eNumero);
                     printf("Ingresa el nombre del elemento: \n");
                     gets(sNombre);
 					enCola(&inicio, &final, eNumero, sNombre);

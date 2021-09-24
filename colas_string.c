@@ -74,7 +74,7 @@ void ver_cola(pNodo inicio){
 		aux = inicio;	
 		printf("\nCola: ");
 			while (aux != NULL){
-				printf("%d ", aux->informacion);
+				printf("%d %s", aux->informacion, aux->sNombre);
 				aux = aux->siguiente;
 			}	
 		printf("\n");

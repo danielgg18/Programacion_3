@@ -113,10 +113,9 @@ void enCola(pNodo *inicio, pNodo *final, int x, char nombre[20]){
 
 /*
    Name: deCola
-   Description: Eliminar y mostrar el primer elemento de la cola.
+   Description: Eliminar el primer elemento de la cola.
    Parámetros: 
       inicio: Tipo apuntador al primer elemento de la cola
-      final: Tipo apuntador al último elemento de la cola
    Regresa:
    	  x: Entero, el informacion del elemento de la cola que se eliminará.
    	  ERROR_VALOR : En caso de que la cola esté vacía.

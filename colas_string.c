@@ -124,7 +124,6 @@ void enCola(pNodo *inicio, pNodo *final, int x, char nombre[20]){
 int deCola(pNodo *inicio, char nombre[20]){
 	pNodo aux;
 	int x;
-    char nombre[20];
 
 	if(cola_vacia(*inicio)){
 		fprintf(stderr, "La cola est%c vac%ca\n", 160, 161);
@@ -133,7 +132,7 @@ int deCola(pNodo *inicio, char nombre[20]){
 
 	aux = *inicio;
 	x = (*inicio)->informacion;
-    nombre = (*inicio)->sNombre;
+    strcpy(nombre,aux->sNombre);
 	*inicio = (*inicio)->siguiente;
 	
 	return x;

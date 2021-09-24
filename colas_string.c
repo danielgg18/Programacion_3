@@ -54,7 +54,7 @@ void ver_cabecera(pNodo cabecera){
 	if(cola_vacia(cabecera)){
 		fprintf(stderr, "La cola est%c vac%ca\n", 160, 161);
 	} else 
-		printf("El inicio de la cola es: %d %s\n", cabecera->informacion, cabecera->sNombre);
+		printf("El inicio de la cola es: %d-%s\n", cabecera->informacion, cabecera->sNombre);
 }
 
 
@@ -74,7 +74,7 @@ void ver_cola(pNodo inicio){
 		aux = inicio;	
 		printf("\nCola: ");
 			while (aux != NULL){
-				printf("%d %s", aux->informacion, aux->sNombre);
+				printf("%d-%s ", aux->informacion, aux->sNombre);
 				aux = aux->siguiente;
 			}	
 		printf("\n");

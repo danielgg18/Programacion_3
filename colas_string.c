@@ -120,7 +120,7 @@ void enCola(pNodo *inicio, pNodo *final, int x, char nombre[20]){
    	  x: Entero, el informacion del elemento de la cola que se eliminará.
    	  ERROR_VALOR : En caso de que la cola esté vacía.
 */
-int deCola(pNodo *inicio, char nombre[20]){
+int deCola(pNodo *inicio, pNodo *final){
 	pNodo aux;
 	int x;
 
@@ -131,8 +131,12 @@ int deCola(pNodo *inicio, char nombre[20]){
 
 	aux = *inicio;
 	x = (*inicio)->informacion;
-    strcpy(nombre,aux->sNombre);
+    //strcpy(nombre,aux->sNombre);
 	*inicio = (*inicio)->siguiente;
+
+	if(*inicio==NULL){
+		*final = NULL;
+	}
 	
 	return x;
 }
@@ -163,9 +167,9 @@ int main(){
 					enCola(&inicio, &final, eNumero, sNombre);
 					break;
 
-			case 2: eNumero = deCola(&inicio, sNombre);
+			case 2: eNumero = deCola(&inicio, &final);
 					if (eNumero!= ERROR_VALOR)
-						printf("Se elimin%c el elemento %d de la cola\n", 162, eNumero);
+						printf("Se eliminaron los elementos %d-%s de la cola\n", eNumero, sNombre);
 					break;
 
 			case 3: ver_cabecera(inicio);

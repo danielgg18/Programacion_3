@@ -138,6 +138,7 @@ int deCola(pNodo *inicio, pNodo *final){
 		*final = NULL;
 	}
 	
+	free(aux);
 	return x;
 }
 

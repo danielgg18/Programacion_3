@@ -115,14 +115,14 @@ void ver_cola(pNodo inicio, pNodo final){
 
 
 /*
-   Name: enCola
+   Name: enColaInicio
    Description: Agregar un nuevo elemento a la cola
    Parámetros: 
       inicio: Tipo apuntador al primer elemento de la cola
 	  final: Tipo apuntador al último elemento de la cola
 	  x: Entero, informacion que se le asignara al elemento de la cola nuevo.
 */
-void enCola(pNodo *inicio, pNodo *final, int x, char nombre[20]){
+void enColaInicio(pNodo *inicio, pNodo *final, int x, char nombre[20]){
 	pNodo nuevo;
 	
 	if(cola_llena()){ 	/* Revisar que no está llena la memoria */
@@ -138,6 +138,38 @@ void enCola(pNodo *inicio, pNodo *final, int x, char nombre[20]){
 		}else {
 			(*final)->siguiente = nuevo;
 			*final = nuevo;
+		} 			
+	}
+}
+
+/*
+   Name: enColaFinal
+   Description: Agregar un nuevo elemento a la cola
+   Parámetros: 
+      inicio: Tipo apuntador al primer elemento de la cola
+	  final: Tipo apuntador al último elemento de la cola
+	  x: Entero, informacion que se le asignara al elemento de la cola nuevo.
+*/
+void enColaFinal(pNodo *inicio, pNodo *final, int x, char nombre[20]){
+	pNodo nuevo;
+    pNodo aux;
+	
+	if(cola_llena()){ 	/* Revisar que no está llena la memoria */
+				fprintf(stderr, "Memoria llena.\n");
+	}else {
+		nuevo = (pNodo)malloc(sizeof(tipoNodo)); //Se reserva el espacio en memoria para el incio
+		nuevo->informacion = x;
+        strcpy(nuevo->sNombre, nombre);
+   		nuevo->siguiente = nuevo->anterior = NULL;
+   
+		if(cola_vacia(*inicio)){
+			*inicio = *final= nuevo;
+		}else {
+			*inicio = aux;
+            (*final)->siguiente = nuevo;
+            (*final)->anterior = aux;
+			*final = nuevo;
+
 		} 			
 	}
 }
@@ -187,7 +219,7 @@ int main(){
 		fflush(stdin);
 		//system("cls");
 		printf("\t*******\n\t Colas\n\t*******\n");
-		printf("1. Agregar\n2. Eliminar\n3. Ver Primero\n4. Ver Ultimo\n5. Ver Cola\n6. Salir\n");
+		printf("1. Agregar inicio\n2.Agregar final\n3. Eliminar\n4. Ver Primero\n5. Ver Ultimo\n6. Ver Cola\n7. Salir\n");
 		printf("Selecione una opci%cn: ", 162);
 		scanf("%d", &eOpcion);
 
@@ -197,34 +229,42 @@ int main(){
                     printf("Ingresa el nombre del elemento: \n");
                     fflush(stdin);
                     gets(sNombre);
-					enCola(&inicio, &final, eNumero, sNombre);
+					enColaInicio(&inicio, &final, eNumero, sNombre);
 					break;
+			
+            case 2: printf("Ingrese el nuevo elemento: \n");
+					scanf("%d", &eNumero);
+                    printf("Ingresa el nombre del elemento: \n");
+                    fflush(stdin);
+                    gets(sNombre);
+					enColaFinal(&inicio, &final, eNumero, sNombre);
+					break;                    
 
-			case 2: eNumero = deCola(&inicio, &final);
+			case 3: eNumero = deCola(&inicio, &final);
 					if (eNumero!= ERROR_VALOR)
 						printf("Se eliminaron los elementos %d-%s de la cola\n", eNumero, sNombre);
 					break;
 
-			case 3: ver_cabecera(inicio);
+			case 4: ver_cabecera(inicio);
 					getch();
 					break;
 
-            case 4: ver_final(final);
+            case 5: ver_final(final);
 					getch();
 					break;
 
-			case 5: ver_cola(inicio,final);
+			case 6: ver_cola(inicio,final);
 					getch();
 					break;
 
-			case 6: break;
+			case 7: break;
 
 			default: printf("Error en la selecci%cn. \n", 162);
 					 break;
 
 		} // switch
 
-	} while(eOpcion != 6);
+	} while(eOpcion != 7);
 			
 	getch();
 	return 0;

@@ -7,6 +7,7 @@
 typedef struct nodo {
    int informacion;
    char sNombre[20];
+   struct nodo *anterior;
    struct nodo *siguiente; //Apuntador que apunta a una struct nodo
 } tipoNodo;
 
@@ -57,6 +58,19 @@ void ver_cabecera(pNodo cabecera){
 		printf("El inicio de la cola es: %d-%s\n", cabecera->informacion, cabecera->sNombre);
 }
 
+/*
+   Name: ver_final
+   Description: Mostrar el ultimo elemento de la cola
+   Parámetros: 
+      cabecera: Tipo apuntador al ultimo elemento de la cola
+*/
+void ver_final(pNodo ultimo){
+	if(cola_vacia(ultimo)){
+		fprintf(stderr, "La cola est%c vac%ca\n", 160, 161);
+	} else 
+		printf("El final de la cola es: %d-%s\n", ultimo->informacion, ultimo->sNombre);
+}
+
 
 /*
    Name: ver_cola
@@ -64,21 +78,39 @@ void ver_cabecera(pNodo cabecera){
    Parámetros: 
       inicio: Tipo apuntador al primer elemento de la cola
 */
-void ver_cola(pNodo inicio){
+void ver_cola(pNodo inicio, pNodo final){
 
 	pNodo aux;
+    int opcion;
 	
-	if(cola_vacia(inicio)){
-		fprintf(stderr, "La cola est%c vac%ca\n", 160, 161);	
-	}else {
-		aux = inicio;	
-		printf("\nCola: ");
-			while (aux != NULL){
-				printf("%d-%s ", aux->informacion, aux->sNombre);
-				aux = aux->siguiente;
-			}	
-		printf("\n");
-	}
+    printf("¿Desde donde deseas ver la cola?:\n1.Inicio\n2.Final\n");
+    scanf("%d", &opcion);
+
+    if(opcion==1){
+        if(cola_vacia(inicio)){
+            fprintf(stderr, "La cola est%c vac%ca\n", 160, 161);	
+        }else {
+            aux = inicio;	
+            printf("\nCola: ");
+                while (aux != NULL){
+                    printf("%d-%s ", aux->informacion, aux->sNombre);
+                    aux = aux->siguiente;
+                }	
+            printf("\n");
+        }
+    } else{
+         if(cola_vacia(inicio)){
+            fprintf(stderr, "La cola est%c vac%ca\n", 160, 161);	
+        }else {
+            aux = final;	
+            printf("\nCola: ");
+                while (aux != NULL){
+                    printf("%d-%s ", aux->informacion, aux->sNombre);
+                    aux = aux->siguiente;
+                }	
+            printf("\n");
+        }
+    }
 }
 
 
@@ -92,22 +124,47 @@ void ver_cola(pNodo inicio){
 */
 void enCola(pNodo *inicio, pNodo *final, int x, char nombre[20]){
 	pNodo nuevo;
-	
-	if(cola_llena()){ 	/* Revisar que no está llena la memoria */
-				fprintf(stderr, "Memoria llena.\n");
-	}else {
-		nuevo = (pNodo)malloc(sizeof(tipoNodo)); //Se reserva el espacio en memoria para el incio
-		nuevo->informacion = x;
-        strcpy(nuevo->sNombre, nombre);
-   		nuevo->siguiente = NULL;
-   
-		if(cola_vacia(*inicio)){
-			*inicio = *final= nuevo;
-		}else {
-			(*final)->siguiente = nuevo;
-			*final = nuevo;
-		} 			
-	}
+	int opcion;
+    
+    printf("¿En donde quieres agregar el elemento?:\n1.Inicio\n2.Final\n");
+    scanf("%d", &opcion);
+
+    if (opcion==1){
+        if(cola_llena()){ 	/* Revisar que no está llena la memoria */
+                    fprintf(stderr, "Memoria llena.\n");
+        }else {
+            nuevo = (pNodo)malloc(sizeof(tipoNodo)); //Se reserva el espacio en memoria para el incio
+            nuevo->informacion = x;
+            strcpy(nuevo->sNombre, nombre);
+            nuevo->anterior = NULL;
+           (*inicio)->siguiente = nuevo;
+    
+            if(cola_vacia(*inicio)){
+                *inicio = *final = nuevo;
+            }else {
+                (*final)->siguiente = nuevo;
+                *final = nuevo;
+            } 			
+        }
+    } else {
+         if(cola_llena()){ 	/* Revisar que no está llena la memoria */
+                    fprintf(stderr, "Memoria llena.\n");
+        }else {
+            nuevo = (pNodo)malloc(sizeof(tipoNodo)); //Se reserva el espacio en memoria para el incio
+            nuevo->informacion = x;
+            strcpy(nuevo->sNombre, nombre);
+            nuevo->siguiente = NULL;
+            (*final)->anterior = nuevo;
+    
+            if(cola_vacia(*inicio)){
+                *inicio = *final = nuevo;
+            }else {
+                (*final)->siguiente = nuevo;
+                *final = nuevo;
+            } 			
+        }
+        
+    }
 }
 
 
@@ -142,7 +199,7 @@ int deCola(pNodo *inicio, pNodo *final){
 	return x;
 }
 
-/******************/
+/********Funcion principal**********/
 int main(){
 	pNodo inicio = NULL, 
 		  final = NULL;
@@ -155,7 +212,7 @@ int main(){
 		fflush(stdin);
 		//system("cls");
 		printf("\t*******\n\t Colas\n\t*******\n");
-		printf("1. Agregar\n2. Eliminar\n3. Ver Frente\n4. Ver Cola\n5. Salir\n");
+		printf("1. Agregar\n2. Eliminar\n3. Ver Primero\n4. Ver Ultimo\n5. Ver Cola\n6. Salir\n");
 		printf("Selecione una opci%cn: ", 162);
 		scanf("%d", &eOpcion);
 
@@ -177,18 +234,22 @@ int main(){
 					getch();
 					break;
 
-			case 4: ver_cola(inicio);
+            case 4: ver_final(final);
 					getch();
 					break;
 
-			case 5: break;
+			case 5: ver_cola(inicio,final);
+					getch();
+					break;
+
+			case 6: break;
 
 			default: printf("Error en la selecci%cn. \n", 162);
 					 break;
 
 		} // switch
 
-	} while(eOpcion != 5);
+	} while(eOpcion != 6);
 			
 	getch();
 	return 0;

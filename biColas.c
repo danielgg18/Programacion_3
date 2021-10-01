@@ -124,47 +124,22 @@ void ver_cola(pNodo inicio, pNodo final){
 */
 void enCola(pNodo *inicio, pNodo *final, int x, char nombre[20]){
 	pNodo nuevo;
-	int opcion;
-    
-    printf("¿En donde quieres agregar el elemento?:\n1.Inicio\n2.Final\n");
-    scanf("%d", &opcion);
-
-    if (opcion==1){
-        if(cola_llena()){ 	/* Revisar que no está llena la memoria */
-                    fprintf(stderr, "Memoria llena.\n");
-        }else {
-            nuevo = (pNodo)malloc(sizeof(tipoNodo)); //Se reserva el espacio en memoria para el incio
-            nuevo->informacion = x;
-            strcpy(nuevo->sNombre, nombre);
-            nuevo->anterior = NULL;
-           (*inicio)->siguiente = nuevo;
-    
-            if(cola_vacia(*inicio)){
-                *inicio = *final = nuevo;
-            }else {
-                (*final)->siguiente = nuevo;
-                *final = nuevo;
-            } 			
-        }
-    } else {
-         if(cola_llena()){ 	/* Revisar que no está llena la memoria */
-                    fprintf(stderr, "Memoria llena.\n");
-        }else {
-            nuevo = (pNodo)malloc(sizeof(tipoNodo)); //Se reserva el espacio en memoria para el incio
-            nuevo->informacion = x;
-            strcpy(nuevo->sNombre, nombre);
-            nuevo->siguiente = NULL;
-            (*final)->anterior = nuevo;
-    
-            if(cola_vacia(*inicio)){
-                *inicio = *final = nuevo;
-            }else {
-                (*final)->siguiente = nuevo;
-                *final = nuevo;
-            } 			
-        }
-        
-    }
+	
+	if(cola_llena()){ 	/* Revisar que no está llena la memoria */
+				fprintf(stderr, "Memoria llena.\n");
+	}else {
+		nuevo = (pNodo)malloc(sizeof(tipoNodo)); //Se reserva el espacio en memoria para el incio
+		nuevo->informacion = x;
+        strcpy(nuevo->sNombre, nombre);
+   		nuevo->siguiente = NULL;
+   
+		if(cola_vacia(*inicio)){
+			*inicio = *final= nuevo;
+		}else {
+			(*final)->siguiente = nuevo;
+			*final = nuevo;
+		} 			
+	}
 }
 
 

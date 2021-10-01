@@ -124,6 +124,7 @@ void ver_cola(pNodo inicio, pNodo final){
 */
 void enColaInicio(pNodo *inicio, pNodo *final, int x, char nombre[20]){
 	pNodo nuevo;
+    pNodo aux;
 	
 	if(cola_llena()){ 	/* Revisar que no está llena la memoria */
 				fprintf(stderr, "Memoria llena.\n");
@@ -131,17 +132,19 @@ void enColaInicio(pNodo *inicio, pNodo *final, int x, char nombre[20]){
 		nuevo = (pNodo)malloc(sizeof(tipoNodo)); //Se reserva el espacio en memoria para el incio
 		nuevo->informacion = x;
         strcpy(nuevo->sNombre, nombre);
-   		nuevo->siguiente = NULL;
+   		nuevo->siguiente = nuevo->anterior = NULL;
    
 		if(cola_vacia(*inicio)){
-			*inicio = *final= nuevo;
+			*inicio = *final = nuevo;
 		}else {
-			(*final)->siguiente = nuevo;
-			*final = nuevo;
+			*final = aux;
+            (*inicio)->siguiente = nuevo;
+            (*inicio)->anterior = aux;
+			*inicio = nuevo;
+
 		} 			
 	}
 }
-
 /*
    Name: enColaFinal
    Description: Agregar un nuevo elemento a la cola
@@ -163,7 +166,7 @@ void enColaFinal(pNodo *inicio, pNodo *final, int x, char nombre[20]){
    		nuevo->siguiente = nuevo->anterior = NULL;
    
 		if(cola_vacia(*inicio)){
-			*inicio = *final= nuevo;
+			*inicio = *final = nuevo;
 		}else {
 			*inicio = aux;
             (*final)->siguiente = nuevo;

@@ -106,6 +106,7 @@ void ver_cola(pNodo inicio, pNodo final){
             }
         }
     printf("\n");
+	}
 }
 
 
@@ -176,7 +177,7 @@ int main(){
 
 	int eOpcion = 0, 
 		eNumero;
-    char sNombre[20];
+    char sNombre[12];
 
 	do{
 		fflush(stdin);
@@ -204,7 +205,7 @@ int main(){
 					getch();
 					break;
 
-			case 4: ver_cola(inicio);
+			case 4: ver_cola(inicio, final);
 					getch();
 					break;
 

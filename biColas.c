@@ -46,18 +46,31 @@ int cola_llena(){
 }
 
 /*
-   Name: ver_cabecera
-   Description: Mostrar el primer elemento de la cola
+   Name: ver_extremos
+   Description: Mostrar el primer o el ultimo elemento de la cola
    Parámetros: 
       cabecera: Tipo apuntador al primer elemento de la cola
+      ultimo: Tipo apuntador al ultimo elemento de la cola
 */
-void ver_cabecera(pNodo cabecera, pNodo ultimo){
-	if(cola_vacia(cabecera, ultimo)){
+void ver_extremos(pNodo cabecera, pNodo ultimo){
+	
+    int opcion;
+    
+    if(cola_vacia(cabecera, ultimo)){
 		fprintf(stderr, "La cola est%c vac%ca\n", 160, 161);
-	} else 
-		printf("El inicio de la cola es: %d-%s\n", cabecera->informacion, cabecera->sNombre);
+	} else {
+		printf("¿Qué extremo de la cola deseas ver?:\n1.Inicio\n2.Final\n");
+        scanf("%d", &opcion);
+        
+        if (opcion == 1)
+        {
+            printf("El inicio de la cola es: %d-%s\n", cabecera->informacion, cabecera->sNombre);
+        } else {
+            printf("El final de la cola es: %d-%s\n", ultimo->informacion, ultimo->sNombre);
+        }
+        
+    }
 }
-
 
 /*
    Name: ver_cola
@@ -174,7 +187,7 @@ int main(){
 						printf("Se eliminaron los elementos %d-%s de la cola\n", eNumero, sNombre);
 					break;
 
-			case 3: ver_cabecera(inicio);
+			case 3: ver_extremos(inicio, final);
 					getch();
 					break;
 

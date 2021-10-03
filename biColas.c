@@ -171,18 +171,30 @@ void enCola(pNodo *inicio, pNodo *final, int x, char nombre[12]){
 */
 int deCola(pNodo *inicio, pNodo *final){
 	pNodo aux;
-	int x;
+	int x, opcion;
 
-	if(cola_vacia(*inicio)){
+	if(cola_vacia(*inicio, *final)){
 		fprintf(stderr, "La cola est%c vac%ca\n", 160, 161);
 		return ERROR_VALOR;
+	} else {
+		printf("¿Que elemento deseas eliminar?:\n1.Inicio\n2.Final\n");
+        scanf("%d", &opcion);
+		
+		if (opcion == 1)
+		{
+			aux = *inicio;
+			x = (*inicio)->informacion;
+			//strcpy(nombre,aux->sNombre);
+			*inicio = (*inicio)->siguiente;
+		} else {
+			aux = *final;
+			x = (*final)->informacion;
+			//strcpy(nombre,aux->sNombre);
+			*final = (*final)->anterior;
+		}
+		
 	}
-
-	aux = *inicio;
-	x = (*inicio)->informacion;
-    //strcpy(nombre,aux->sNombre);
-	*inicio = (*inicio)->siguiente;
-
+	
 	if(*inicio==NULL){
 		*final = NULL;
 	}

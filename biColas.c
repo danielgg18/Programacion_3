@@ -18,6 +18,7 @@ typedef tipoNodo *pNodo; //Apuntador a toda una estructura
    Name: cola_vacia
    Parámetros: 
       inicio: Tipo apuntador al primer elemento de la cola
+	  final: Tipo apuntador al último elemento de la cola
    Regresa:
    	  1: Si la cola está vacÃ­a
    	  0: Si la cola no está vacÃ­a
@@ -77,6 +78,7 @@ void ver_extremos(pNodo cabecera, pNodo ultimo){
    Description: Mostrar todos los elementos de la cola
    Parámetros: 
       inicio: Tipo apuntador al primer elemento de la cola
+	  final: Tipo apuntador al ultimo elemento de la cola
 */
 void ver_cola(pNodo inicio, pNodo final){
 
@@ -116,7 +118,8 @@ void ver_cola(pNodo inicio, pNodo final){
    Parámetros: 
       inicio: Tipo apuntador al primer elemento de la cola
 	  final: Tipo apuntador al último elemento de la cola
-	  x: Entero, informacion que se le asignara al elemento de la cola nuevo.
+	  x: Entero, informacion que se le asignara al elemento de la cola nuevo
+	  nombre: cadena, informacion que se le asignara al elemento de la cola nuevo
 */
 void enCola(pNodo *inicio, pNodo *final, int x, char nombre[12]){
 	
@@ -165,6 +168,7 @@ void enCola(pNodo *inicio, pNodo *final, int x, char nombre[12]){
    Description: Eliminar el primer elemento de la cola.
    Parámetros: 
       inicio: Tipo apuntador al primer elemento de la cola
+	  final: Tipo apuntador al ultimo elemento de la cola
    Regresa:
    	  x: Entero, el informacion del elemento de la cola que se eliminará.
    	  ERROR_VALOR : En caso de que la cola esté vacía.
@@ -203,7 +207,7 @@ int deCola(pNodo *inicio, pNodo *final){
 	return x;
 }
 
-/******************/
+/*******Funcion Principal***********/
 int main(){
 	pNodo inicio = NULL, 
 		  final = NULL;

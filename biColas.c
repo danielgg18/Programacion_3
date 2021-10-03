@@ -59,7 +59,7 @@ void ver_extremos(pNodo cabecera, pNodo ultimo){
     if(cola_vacia(cabecera, ultimo)){
 		fprintf(stderr, "La cola est%c vac%ca\n", 160, 161);
 	} else {
-		printf("¿Qué extremo de la cola deseas ver?:\n1.Inicio\n2.Final\n");
+		printf("¿Que extremo de la cola deseas ver?:\n1.Inicio\n2.Final\n");
         scanf("%d", &opcion);
         
         if (opcion == 1)
@@ -216,7 +216,7 @@ int main(){
 		fflush(stdin);
 		//system("cls");
 		printf("\t*******\n\t Colas\n\t*******\n");
-		printf("1. Agregar\n2. Eliminar\n3. Ver Frente\n4. Ver Cola\n5. Salir\n");
+		printf("1. Agregar\n2. Eliminar\n3. Ver Extremos\n4. Ver Cola\n5. Salir\n");
 		printf("Selecione una opci%cn: ", 162);
 		scanf("%d", &eOpcion);
 

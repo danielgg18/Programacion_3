@@ -118,23 +118,44 @@ void ver_cola(pNodo inicio, pNodo final){
 	  final: Tipo apuntador al último elemento de la cola
 	  x: Entero, informacion que se le asignara al elemento de la cola nuevo.
 */
-void enCola(pNodo *inicio, pNodo *final, int x, char nombre[20]){
+void enCola(pNodo *inicio, pNodo *final, int x, char nombre[12]){
+	
 	pNodo nuevo;
+	int opcion;
 	
 	if(cola_llena()){ 	/* Revisar que no está llena la memoria */
 				fprintf(stderr, "Memoria llena.\n");
 	}else {
+		
 		nuevo = (pNodo)malloc(sizeof(tipoNodo)); //Se reserva el espacio en memoria para el incio
 		nuevo->informacion = x;
-        strcpy(nuevo->sNombre, nombre);
-   		nuevo->siguiente = NULL;
-   
-		if(cola_vacia(*inicio)){
-			*inicio = *final= nuevo;
-		}else {
-			(*final)->siguiente = nuevo;
-			*final = nuevo;
-		} 			
+		strcpy(nuevo->sNombre, nombre);			
+		nuevo->siguiente = NULL;
+		nuevo->anterior = NULL;
+	
+		printf("¿Desde donde deseas encolar?:\n1.Inicio\n2.Final\n");
+        scanf("%d", &opcion);
+		
+		if (opcion == 1)
+		{
+			if(cola_vacia(*inicio, *final)){
+				*inicio = *final = nuevo;
+			}else {
+				(*inicio)->anterior = nuevo;
+				nuevo->siguiente = *inicio;
+				*inicio = nuevo;
+			} 			
+		} else {
+			
+			if(cola_vacia(*inicio, *final)){
+				*inicio = *final = nuevo;
+			}else {
+				(*final)->siguiente = nuevo;
+				nuevo->anterior = *final;
+				*final = nuevo;
+			} 			
+		}
+		
 	}
 }
 

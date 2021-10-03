@@ -78,21 +78,34 @@ void ver_extremos(pNodo cabecera, pNodo ultimo){
    Parámetros: 
       inicio: Tipo apuntador al primer elemento de la cola
 */
-void ver_cola(pNodo inicio){
+void ver_cola(pNodo inicio, pNodo final){
 
 	pNodo aux;
+    int opcion;
 	
-	if(cola_vacia(inicio)){
+	if(cola_vacia(inicio, final)){
 		fprintf(stderr, "La cola est%c vac%ca\n", 160, 161);	
 	}else {
-		aux = inicio;	
-		printf("\nCola: ");
+        printf("¿Desde donde deseas recorrer la cola?:\n1.Inicio\n2.Final\n");
+        scanf("%d", &opcion);
+		
+        if (opcion == 1){
+            aux = inicio;	
+		    printf("\nCola: ");
 			while (aux != NULL){
 				printf("%d-%s ", aux->informacion, aux->sNombre);
 				aux = aux->siguiente;
 			}	
-		printf("\n");
-	}
+		    
+        } else {
+            aux = final;	
+		    printf("\nCola: ");
+			while (aux != NULL){
+				printf("%d-%s ", aux->informacion, aux->sNombre);
+				aux = aux->anterior;
+            }
+        }
+    printf("\n");
 }
 
 

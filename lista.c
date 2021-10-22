@@ -12,7 +12,6 @@ typedef struct nodo {
 
 typedef tipoNodo *pNodo; //Apuntador a toda una estructura
 
-<<<<<<< HEAD
 void creaInicio(pNodo *liga, int numCanciones, char album[22], char nomArtista[20]){
 	pNodo P, Q;
 
@@ -32,8 +31,6 @@ void creaInicio(pNodo *liga, int numCanciones, char album[22], char nomArtista[2
 	} while (Q == NULL);
 	
 }
-=======
->>>>>>> parent of 90b1790 (Update lista.c)
 
 void creaFinal(pNodo *liga, int numCanciones, char album[22], char nomArtista[20]){
 	pNodo P, Q, T;
@@ -69,27 +66,17 @@ int main(){
 		fflush(stdin);
 		//system("cls");
 		printf("\t*******\n\t Lista ligada\n\t*******\n");
-<<<<<<< HEAD
 		printf("1. Crear lista desde el inicio\n2. Crear lista desde el final\n3. Ver Extremos\n4. Ver Cola\n5. Salir\n");
-=======
-		printf("1. Agregar\n2. Eliminar\n3. Ver Extremos\n4. Ver Cola\n5. Salir\n");
->>>>>>> parent of 90b1790 (Update lista.c)
 		printf("Selecione una opci%cn: ", 162);
 		scanf("%d", &eOpcion);
 
 		switch(eOpcion){
-<<<<<<< HEAD
 			case 1: printf("Ingrese el numero de canciones del album: \n");
 					scanf("%d", &numCanciones);
                     printf("Ingresa el nombre del album: \n");
                     fflush(stdin);
                     gets(album);
 					printf("Ingresa el nombre del artista: \n");
-=======
-			case 1: printf("Ingrese el nuevo elemento: \n");
-					scanf("%d", &eNumero);
-                    printf("Ingresa el nombre del elemento: \n");
->>>>>>> parent of 90b1790 (Update lista.c)
                     fflush(stdin);
                     gets(sNombre);
 					enCola(&inicio, &final, eNumero, sNombre);

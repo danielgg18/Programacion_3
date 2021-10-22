@@ -1,3 +1,4 @@
+//Directivas del preprocesador
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -5,13 +6,34 @@
 #define ERROR_VALOR -1
  
 typedef struct nodo {
-   int informacion;
-   char sNombre[12];
-   //Apuntador que apunta a una struct nodo
+   int canciones;
+   char titulo[22];
+   char artista[20];
+   struct nodo *liga; //Apuntador que apunta a una struct nodo
 } tipoNodo;
 
 typedef tipoNodo *pNodo; //Apuntador a toda una estructura
 
+void creaInicio(pNodo *liga, int numCanciones, char album[22], char nomArtista[20]){
+	pNodo P, Q;
+
+	P = (pNodo)malloc(sizeof(tipoNodo));
+	P->canciones = numCanciones;
+	strcpy(P->titulo, album);
+	strcpy(P->artista, nomArtista);
+	P->liga = NULL;
+	
+	do{
+		Q = (pNodo)malloc(sizeof(tipoNodo));
+		Q = (pNodo)malloc(sizeof(tipoNodo));
+		Q->canciones = numCanciones;
+		strcpy(P->titulo, album);
+		strcpy(P->artista, nomArtista);
+		Q->liga = P;
+		P = Q;
+	} while (Q == NULL);
+	
+}
 
 
 int main(){
@@ -19,24 +41,27 @@ int main(){
 		  final = NULL;
 
 	int eOpcion = 0, 
-		eNumero;
-    char sNombre[12];
+		numCanciones;
+    char album[22], nomArtista[20];
 
 	do{
 		fflush(stdin);
 		//system("cls");
 		printf("\t*******\n\t Lista ligada\n\t*******\n");
-		printf("1. Agregar\n2. Eliminar\n3. Ver Extremos\n4. Ver Cola\n5. Salir\n");
+		printf("1. Crear lista desde el inicio\n2. Eliminar\n3. Ver Extremos\n4. Ver Cola\n5. Salir\n");
 		printf("Selecione una opci%cn: ", 162);
 		scanf("%d", &eOpcion);
 
 		switch(eOpcion){
 			case 1: printf("Ingrese el nuevo elemento: \n");
-					scanf("%d", &eNumero);
-                    printf("Ingresa el nombre del elemento: \n");
+					scanf("%d", &numCanciones);
+                    printf("Ingresa el nombre del album: \n");
                     fflush(stdin);
-                    gets(sNombre);
-					enCola(&inicio, &final, eNumero, sNombre);
+                    gets(album);
+					printf("Ingresa el nombre del artista: \n");
+                    fflush(stdin);
+					gets(nomArtista);
+					creaInicio(&inicio, numCanciones, album, nomArtista);
 					break;
 
 			case 2: eNumero = deCola(&inicio, &final);

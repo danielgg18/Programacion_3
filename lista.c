@@ -1,4 +1,3 @@
-//Directivas del preprocesador
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,14 +5,14 @@
 #define ERROR_VALOR -1
  
 typedef struct nodo {
-   int canciones;
-   char titulo[22];
-   char artista[20];
-   struct nodo *liga; //Apuntador que apunta a una struct nodo
+   int informacion;
+   char sNombre[12];
+   //Apuntador que apunta a una struct nodo
 } tipoNodo;
 
 typedef tipoNodo *pNodo; //Apuntador a toda una estructura
 
+<<<<<<< HEAD
 void creaInicio(pNodo *liga, int numCanciones, char album[22], char nomArtista[20]){
 	pNodo P, Q;
 
@@ -33,6 +32,8 @@ void creaInicio(pNodo *liga, int numCanciones, char album[22], char nomArtista[2
 	} while (Q == NULL);
 	
 }
+=======
+>>>>>>> parent of 90b1790 (Update lista.c)
 
 void creaFinal(pNodo *liga, int numCanciones, char album[22], char nomArtista[20]){
 	pNodo P, Q, T;
@@ -61,27 +62,37 @@ int main(){
 		  final = NULL;
 
 	int eOpcion = 0, 
-		numCanciones;
-    char album[22], nomArtista[20];
+		eNumero;
+    char sNombre[12];
 
 	do{
 		fflush(stdin);
 		//system("cls");
 		printf("\t*******\n\t Lista ligada\n\t*******\n");
+<<<<<<< HEAD
 		printf("1. Crear lista desde el inicio\n2. Crear lista desde el final\n3. Ver Extremos\n4. Ver Cola\n5. Salir\n");
+=======
+		printf("1. Agregar\n2. Eliminar\n3. Ver Extremos\n4. Ver Cola\n5. Salir\n");
+>>>>>>> parent of 90b1790 (Update lista.c)
 		printf("Selecione una opci%cn: ", 162);
 		scanf("%d", &eOpcion);
 
 		switch(eOpcion){
+<<<<<<< HEAD
 			case 1: printf("Ingrese el numero de canciones del album: \n");
 					scanf("%d", &numCanciones);
                     printf("Ingresa el nombre del album: \n");
                     fflush(stdin);
                     gets(album);
 					printf("Ingresa el nombre del artista: \n");
+=======
+			case 1: printf("Ingrese el nuevo elemento: \n");
+					scanf("%d", &eNumero);
+                    printf("Ingresa el nombre del elemento: \n");
+>>>>>>> parent of 90b1790 (Update lista.c)
                     fflush(stdin);
-					gets(nomArtista);
-					creaInicio(&inicio, numCanciones, album, nomArtista);
+                    gets(sNombre);
+					enCola(&inicio, &final, eNumero, sNombre);
 					break;
 
 			case 2: printf("Ingrese el numero de canciones del album: \n");

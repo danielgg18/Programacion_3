@@ -5,14 +5,15 @@
 #define ERROR_VALOR -1
  
 typedef struct nodo {
-   int informacion;
-   char sNombre[12];
-   //Apuntador que apunta a una struct nodo
+   int canciones;
+   char artista[25];
+   char titulo[25];
+   struct nodo *liga; //Apuntador que apunta a una struct nodo
 } tipoNodo;
 
 typedef tipoNodo *pNodo; //Apuntador a toda una estructura
 
-void creaInicio(pNodo *liga, int numCanciones, char album[22], char nomArtista[20]){
+void creaInicio(pNodo *liga, int numCanciones, char album[25], char nomArtista[25]){
 	pNodo P, Q;
 
 	P = (pNodo)malloc(sizeof(tipoNodo));
@@ -32,7 +33,7 @@ void creaInicio(pNodo *liga, int numCanciones, char album[22], char nomArtista[2
 	
 }
 
-void creaFinal(pNodo *liga, int numCanciones, char album[22], char nomArtista[20]){
+void creaFinal(pNodo *liga, int numCanciones, char album[25], char nomArtista[25]){
 	pNodo P, Q, T;
 
 	P = (pNodo)malloc(sizeof(tipoNodo));
@@ -59,8 +60,8 @@ int main(){
 		  final = NULL;
 
 	int eOpcion = 0, 
-		eNumero;
-    char sNombre[12];
+		numCanciones;
+    char album[25], artista[25];
 
 	do{
 		fflush(stdin);
@@ -78,8 +79,8 @@ int main(){
                     gets(album);
 					printf("Ingresa el nombre del artista: \n");
                     fflush(stdin);
-                    gets(sNombre);
-					enCola(&inicio, &final, eNumero, sNombre);
+                    gets(artista);
+					creaInicio(&inicio, numCanciones, album, artista);
 					break;
 
 			case 2: printf("Ingrese el numero de canciones del album: \n");
@@ -89,8 +90,8 @@ int main(){
                     gets(album);
 					printf("Ingresa el nombre del artista: \n");
                     fflush(stdin);
-					gets(nomArtista);
-					creaFinal(&inicio, numCanciones, album, nomArtista);
+					gets(artista);
+					creaFinal(&inicio, numCanciones, album, artista);
 					break;
 
 			case 3: ver_extremos(inicio, final);

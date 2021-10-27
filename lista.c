@@ -32,15 +32,9 @@ typedef tipoNodo *pNodo; //Apuntador de nombre pNodo que apunta a un tipoNodo
 void CreaInicio(pNodo *P, char artista[30], char album[30]){
 	pNodo Q;
 	int opc;
-	
-	system("cls");
-    printf("\n\t\t\tCREA INICIO\n");
     
     *P = (pNodo) malloc (sizeof(tipoNodo));
-    printf("****Ingresa los datos del %clbum****\n",160);
-    printf("Nombre del %clbum: ", 160);
     strcpy((*P)->NomAlbum, album);
-    printf("\nNombre del artista: ");
     strcpy((*P)->NomArtista, artista);
 	printf("\nN%cmero de canciones del %clbum: ", 163, 160);
     scanf("%d",&(*P)->NumCanciones);
@@ -263,6 +257,17 @@ main(){
 		
 		switch (opcion){
 			case 1:
+				
+				system("cls");
+    			printf("\n\t\t\tCREA INICIO\n");
+				printf("****Ingresa los datos del %clbum****\n",160);
+				printf("Nombre del %clbum: ", 160);
+				fflush(stdin);
+				gets(album);
+				printf("\nNombre del artista: ");
+				fflush(stdin);
+				gets(artista);
+
 				CreaInicio(&P, artista, album);
 				break;
 			case 2:

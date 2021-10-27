@@ -24,6 +24,7 @@ typedef struct nodo {
    char NomArtista[30];
    char NomAlbum[30];
    float Precio;
+   int Num;
    struct nodo *liga; //Apuntador que apunta a una estructura nodo
 } tipoNodo; 
  
@@ -52,6 +53,9 @@ void CreaInicio(pNodo *P){
     scanf("%d",&(*P)->NumCanciones);
 	printf("\nCosto del %clbum: $", 160);
     scanf("%f",&(*P)->Precio);
+	(*P)->Num = 1;
+	
+
     
 	(*P)->liga=NULL;
     
@@ -71,6 +75,11 @@ void CreaInicio(pNodo *P){
 		scanf("%d",&Q->NumCanciones);
 		printf("\nCosto del %clbum: $", 160);
 		scanf("%f",&Q->Precio);
+
+		while ((*P)->Num >= 1){
+			(*P)->Num++;
+		}
+		
         
 		Q->liga= *P;
         *P=Q;
@@ -144,6 +153,7 @@ void RecorreIterativo (pNodo P){
 		printf("\nArtista: %s\n", Q->NomArtista);
 		printf("\nTotal de canciones: %d\n", Q->NumCanciones);
 		printf("\nPrecio: $%.2f\n", Q->Precio);
+		printf("\n*%d*\n", Q->Num);
 
 		Q=Q->liga;
 	} while (Q != NULL);
@@ -194,7 +204,7 @@ void InsertaFinal(pNodo P){
     T->liga=Q;
 }
 
-void insertantes (pNodo *P) {
+void InsertaAntes (pNodo *P) {
 	pNodo Q, X, T;
 	int REF;
 	int BAND=TRUE;
@@ -213,7 +223,7 @@ void insertantes (pNodo *P) {
 		}
 	}
 	
-	if (BAND== TRUE ){
+	if (BAND == TRUE ){
 	    X = (pNodo) malloc (sizeof(tipoNodo));
 	    printf("\n\nIngresa elemento: ");
         scanf("%d",&(X)->NumCanciones);

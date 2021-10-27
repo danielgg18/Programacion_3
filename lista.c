@@ -133,13 +133,17 @@ void CreaFinal (pNodo *P){
     } while (opc == 1); 
 }
 
-void recorreiterativo (pNodo P){
+void RecorreIterativo (pNodo P){
 	pNodo Q;
 	
 	Q=P;
 	
 	do {
-		printf("%d ", Q->NumCanciones);
+		printf("\nAlbum: %s\n", Q->NomAlbum);
+		printf("\nArtista: %s\n", Q->NomArtista);
+		printf("\nTotal de canciones: %d\n", Q->NumCanciones);
+		printf("\nPrecio: $%.2f\n", Q->Precio);
+
 		Q=Q->liga;
 	} while (Q != NULL);
 	
@@ -306,7 +310,7 @@ main(){
 			    CreaFinal(&P);
 				break;
 			case 3:
-				recorreiterativo(P);
+				RecorreIterativo(P);
 				printf("\n");
 	           	break;
 			case 4:

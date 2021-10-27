@@ -139,6 +139,7 @@ void RecorreIterativo (pNodo P){
 	Q=P;
 	
 	do {
+		printf("\n\t\t*INFO DE CADA ALBUM*\n");
 		printf("\nAlbum: %s\n", Q->NomAlbum);
 		printf("\nArtista: %s\n", Q->NomArtista);
 		printf("\nTotal de canciones: %d\n", Q->NumCanciones);
@@ -149,10 +150,15 @@ void RecorreIterativo (pNodo P){
 	
 }
 
-void recorrecursivo (pNodo P){
+void RecorreRecursivo (pNodo P){
 	if (P!=NULL){
-		printf("%d ", P->NumCanciones);
-		recorrecursivo(P->liga);
+		printf("\n\t\t*INFO DE CADA ALBUM*\n");
+		printf("\nAlbum: %s\n", P->NomAlbum);
+		printf("\nArtista: %s\n", P->NomArtista);
+		printf("\nTotal de canciones: %d\n", P->NumCanciones);
+		printf("\nPrecio: $%.2f\n", P->Precio);
+		
+		RecorreRecursivo(P->liga);
 	}
 }
 
@@ -314,7 +320,7 @@ main(){
 				printf("\n");
 	           	break;
 			case 4:
-				recorrecursivo(P);
+				RecorreRecursivo(P);
 				printf("\n");
 				break;
 			case 5:

@@ -261,7 +261,7 @@ void InsertaAntes (pNodo *P) {
 	}
 }
 
-void eliminaprimero (pNodo *P){
+void EliminaPrimero (pNodo *P){
 	pNodo Q;
 	
 	Q=*P;
@@ -275,7 +275,7 @@ void eliminaprimero (pNodo *P){
 	free(Q);
 }
 
-void eliminaultimo (pNodo *P){
+void EliminaUltimo (pNodo *P){
 	pNodo Q,T;
 	
 	if ((*P)->liga==NULL){
@@ -292,13 +292,13 @@ void eliminaultimo (pNodo *P){
 	}
 }
 
-void eliminaX (pNodo *P, int X){
+void EliminaX (pNodo *P, int X){
 	pNodo Q, T;
 	int BAND=TRUE;	
 
 	Q=*P;
 	
-	while (Q->NumCanciones !=X && BAND==TRUE){
+	while (Q->Num !=X && BAND==TRUE){
 		if (Q->liga != NULL){
 			T=Q;
 			Q=Q->liga;
@@ -321,7 +321,7 @@ void eliminaX (pNodo *P, int X){
 
 void buscarrecursivo(pNodo P, int X){
 	if(P != NULL){
-		if (P->NumCanciones == X){
+		if (P->Num == X){
 			printf("El elemento fue encontrado\n");
 		}else{
 			buscarrecursivo(P->liga, X);
@@ -377,15 +377,15 @@ main(){
 				InsertaAntes(&P);
 				break;
 			case 7:
-				eliminaprimero(&P);
+				EliminaPrimero(&P);
 				break;
 			case 8:
-				eliminaultimo(&P);
+				EliminaUltimo(&P);
 				break;
 			case 9:
 				printf("\n\nIngresa el elemento a eliminar: ");
 				scanf("%d", &X);
-				eliminaX(&P, X);
+				EliminaX(&P, X);
 				break;
 			case 10:
 				printf("\n\nIngresa el elemento a buscar: ");

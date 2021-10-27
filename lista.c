@@ -351,7 +351,7 @@ main(){
 				InsertaFinal(P);
 				break;
 			case 6:
-				insertantes(&P);
+				InsertaAntes(&P);
 				break;
 			case 7:
 				eliminaprimero(&P);

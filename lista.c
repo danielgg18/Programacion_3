@@ -190,6 +190,7 @@ void InsertaFinal(pNodo P){
 	}
     
     Q = (pNodo) malloc (sizeof(tipoNodo));
+	
 	printf("\n****Ingresa los datos del %clbum****\n",160);
 	printf("Nombre del %clbum: ", 160);
 	fflush(stdin);
@@ -214,13 +215,14 @@ void InsertaAntes (pNodo *P) {
 	pNodo Q, X, T;
 	int REF;
 	int BAND=TRUE;
+	char artista[30], album[30];
 	
 	Q=*P;
 	
 	printf("\n\nIngresa la referencia: ");
     scanf("%d", &REF);
 	
-	while (Q->NumCanciones != REF && BAND==TRUE){
+	while (Q->Num != REF && BAND==TRUE){
 		if (Q->liga != NULL){
 			T=Q;
 			Q=Q->liga;
@@ -231,9 +233,24 @@ void InsertaAntes (pNodo *P) {
 	
 	if (BAND == TRUE ){
 	    X = (pNodo) malloc (sizeof(tipoNodo));
-	    printf("\n\nIngresa elemento: ");
-        scanf("%d",&(X)->NumCanciones);
-        if (*P==Q){
+	    
+		printf("\n****Ingresa los datos del %clbum****\n",160);
+		printf("Nombre del %clbum: ", 160);
+		fflush(stdin);
+		gets(album);
+		strcpy(X->NomAlbum, album);
+		printf("\nNombre del artista: ");
+		fflush(stdin);
+		gets(artista);
+		strcpy(X->NomArtista, artista);	
+		printf("\nN%cmero de canciones del %clbum: ", 163, 160);
+		scanf("%d",&X->NumCanciones);
+		printf("\nCosto del %clbum: $", 160);
+		scanf("%f",&X->Precio);
+		printf("\nN%cmero de referencia del %clbum: ", 163, 160);
+		scanf("%d",&X->Num);
+        
+		if (*P==Q){
         	X->liga=*P;
         	*P=X;
         }else{

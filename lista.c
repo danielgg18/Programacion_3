@@ -12,6 +12,7 @@
 
 #include<stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -19,13 +20,16 @@
 
 
 typedef struct nodo {
-   int informacion;   //Variable de tipo entero
+   int NumCanciones;   //Variable de tipo entero
+   char Artista[30];
+   char NomAlbum[30];
+   float Precio;
    struct nodo *liga; //Apuntador que apunta a una estructura nodo
 } tipoNodo; 
  
 typedef tipoNodo *pNodo; //Apuntador de nombre pNodo que apunta a un tipoNodo
 
-void creainicio(pNodo *P){
+void CreaInicio(pNodo *P){
 	pNodo Q;
 	int opc;
 	
@@ -34,13 +38,13 @@ void creainicio(pNodo *P){
     
     *P = (pNodo) malloc (sizeof(tipoNodo));
     printf("\n\nIngresa elemento: ");
-    scanf("%d",&(*P)->informacion);
+    scanf("%d",&(*P)->NumCanciones);
     (*P)->liga=NULL;
     
     do {
     	Q = (pNodo) malloc (sizeof(tipoNodo));
     	printf("\nIngresa elemento: ");
-    	scanf("%d",&Q->informacion);
+    	scanf("%d",&Q->NumCanciones);
         Q->liga= *P;
         
         *P=Q;
@@ -59,14 +63,14 @@ void creafinal (pNodo *P){
     
     *P = (pNodo) malloc (sizeof(tipoNodo));
     printf("\n\nIngresa elemento: ");
-    scanf("%d",&(*P)->informacion);
+    scanf("%d",&(*P)->NumCanciones);
     (*P)->liga=NULL;
     T=*P;
     
     do {
     	Q = (pNodo) malloc (sizeof(tipoNodo));
     	printf("\nIngresa elemento: ");
-    	scanf("%d",&Q->informacion);
+    	scanf("%d",&Q->NumCanciones);
         Q->liga= NULL;
         
         T->liga=Q;
@@ -83,7 +87,7 @@ void recorreiterativo (pNodo P){
 	Q=P;
 	
 	do {
-		printf("%d ", Q->informacion);
+		printf("%d ", Q->NumCanciones);
 		Q=Q->liga;
 	} while (Q != NULL);
 	
@@ -91,7 +95,7 @@ void recorreiterativo (pNodo P){
 
 void recorrecursivo (pNodo P){
 	if (P!=NULL){
-		printf("%d ", P->informacion);
+		printf("%d ", P->NumCanciones);
 		recorrecursivo(P->liga);
 	}
 }
@@ -109,7 +113,7 @@ void insertafinal(pNodo P){
     
     Q = (pNodo) malloc (sizeof(tipoNodo));
     printf("\n\nIngresa elemento: ");
-    scanf("%d",&Q->informacion);
+    scanf("%d",&Q->NumCanciones);
     Q->liga=NULL;
     T->liga=Q;
 }
@@ -124,7 +128,7 @@ void insertantes (pNodo *P) {
 	printf("\n\nIngresa la referencia: ");
     scanf("%d", &REF);
 	
-	while (Q->informacion != REF&&BAND==TRUE){
+	while (Q->NumCanciones != REF&&BAND==TRUE){
 		if (Q->liga != NULL){
 			T=Q;
 			Q=Q->liga;
@@ -136,7 +140,7 @@ void insertantes (pNodo *P) {
 	if (BAND== TRUE ){
 	    X = (pNodo) malloc (sizeof(tipoNodo));
 	    printf("\n\nIngresa elemento: ");
-        scanf("%d",&(X)->informacion);
+        scanf("%d",&(X)->NumCanciones);
         if (*P==Q){
         	X->liga=*P;
         	*P=X;
@@ -185,7 +189,7 @@ void eliminaX (pNodo *P, int X){
 
 	Q=*P;
 	
-	while (Q->informacion !=X && BAND==TRUE){
+	while (Q->NumCanciones !=X && BAND==TRUE){
 		if (Q->liga != NULL){
 			T=Q;
 			Q=Q->liga;
@@ -208,7 +212,7 @@ void eliminaX (pNodo *P, int X){
 
 void buscarrecursivo(pNodo P, int X){
 	if(P != NULL){
-		if (P->informacion == X){
+		if (P->NumCanciones == X){
 			printf("El elemento fue encontrado\n");
 		}else{
 			buscarrecursivo(P->liga, X);
@@ -242,7 +246,7 @@ main(){
 		
 		switch (opcion){
 			case 1:
-				creainicio(&P);
+				CreaInicio(&P);
 				break;
 			case 2:
 			    creafinal(&P);

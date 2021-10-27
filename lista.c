@@ -37,8 +37,9 @@ void CreaInicio(pNodo *P){
     system("cls");
     printf("\n\t\t\tCREA INICIO\n");
 	
-	printf("\n****Ingresa los datos del %clbum****\n",160);
 	*P = (pNodo) malloc (sizeof(tipoNodo));
+	
+	printf("\n****Ingresa los datos del %clbum****\n",160);
 	printf("Nombre del %clbum: ", 160);
 	fflush(stdin);
 	gets(album);
@@ -56,22 +57,22 @@ void CreaInicio(pNodo *P){
     
     do {
     	Q = (pNodo) malloc (sizeof(tipoNodo));
-    printf("\n****Ingresa los datos del %clbum****\n",160);
-    printf("Nombre del %clbum: ", 160);
-	fflush(stdin);
-	gets(album);
-    strcpy(Q->NomAlbum, album);
-    printf("\nNombre del artista: ");
-	fflush(stdin);
-	gets(artista);
-    strcpy(Q->NomArtista, artista);
-	printf("\nN%cmero de canciones del %clbum: ", 163, 160);
-    scanf("%d",&Q->NumCanciones);
-	printf("\nCosto del %clbum: $", 160);
-    scanf("%f",&Q->Precio);
+		
+		printf("\n****Ingresa los datos del %clbum****\n",160);
+		printf("Nombre del %clbum: ", 160);
+		fflush(stdin);
+		gets(album);
+		strcpy(Q->NomAlbum, album);
+		printf("\nNombre del artista: ");
+		fflush(stdin);
+		gets(artista);
+		strcpy(Q->NomArtista, artista);
+		printf("\nN%cmero de canciones del %clbum: ", 163, 160);
+		scanf("%d",&Q->NumCanciones);
+		printf("\nCosto del %clbum: $", 160);
+		scanf("%f",&Q->Precio);
         
 		Q->liga= *P;
-        
         *P=Q;
         
         printf("\nDesea agregar otro elemento:\nSi:1\tNo:0\n");
@@ -79,29 +80,55 @@ void CreaInicio(pNodo *P){
     } while (opc == 1); 
 }
 
-void creafinal (pNodo *P){
+void CreaFinal (pNodo *P){
 	pNodo Q, T;
 	int opc;
+	char artista[30], album[30];
 	
 	system("cls");
     printf("\n\t\t\tCREA FINAL\n");
     
     *P = (pNodo) malloc (sizeof(tipoNodo));
-    printf("\n\nIngresa elemento: ");
+	
+	printf("\n****Ingresa los datos del %clbum****\n",160);
+	printf("Nombre del %clbum: ", 160);
+	fflush(stdin);
+	gets(album);
+	strcpy((*P)->NomAlbum, album);
+	printf("\nNombre del artista: ");
+	fflush(stdin);
+	gets(artista);
+	strcpy((*P)->NomArtista, artista);	
+	printf("\nN%cmero de canciones del %clbum: ", 163, 160);
     scanf("%d",&(*P)->NumCanciones);
-    (*P)->liga=NULL;
+	printf("\nCosto del %clbum: $", 160);
+    scanf("%f",&(*P)->Precio);
+    
+	(*P)->liga=NULL;
     T=*P;
     
     do {
     	Q = (pNodo) malloc (sizeof(tipoNodo));
-    	printf("\nIngresa elemento: ");
-    	scanf("%d",&Q->NumCanciones);
-        Q->liga= NULL;
+    	
+		printf("\n****Ingresa los datos del %clbum****\n",160);
+		printf("Nombre del %clbum: ", 160);
+		fflush(stdin);
+		gets(album);
+		strcpy(Q->NomAlbum, album);
+		printf("\nNombre del artista: ");
+		fflush(stdin);
+		gets(artista);
+		strcpy(Q->NomArtista, artista);	
+		printf("\nN%cmero de canciones del %clbum: ", 163, 160);
+		scanf("%d",&Q->NumCanciones);
+		printf("\nCosto del %clbum: $", 160);
+		scanf("%f",&Q->Precio);
         
+		Q->liga= NULL;
         T->liga=Q;
         T=Q;
         
-        printf("\nDesea agregar otro elemento 0/1\n");
+        printf("\nDesea agregar otro elemento:\nSi:1\tNo:0\n");
         scanf("%d", &opc);
     } while (opc == 1); 
 }
@@ -276,7 +303,7 @@ main(){
 				CreaInicio(&P);
 				break;
 			case 2:
-			    creafinal(&P);
+			    CreaFinal(&P);
 				break;
 			case 3:
 				recorreiterativo(P);

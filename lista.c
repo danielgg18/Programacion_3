@@ -21,7 +21,7 @@
 
 typedef struct nodo {
    int NumCanciones;   //Variable de tipo entero
-   char Artista[30];
+   char NomArtista[30];
    char NomAlbum[30];
    float Precio;
    struct nodo *liga; //Apuntador que apunta a una estructura nodo
@@ -29,7 +29,7 @@ typedef struct nodo {
  
 typedef tipoNodo *pNodo; //Apuntador de nombre pNodo que apunta a un tipoNodo
 
-void CreaInicio(pNodo *P, int canciones, float precio, char artista[30], char album[30]){
+void CreaInicio(pNodo *P, char artista[30], char album[30]){
 	pNodo Q;
 	int opc;
 	
@@ -39,20 +39,32 @@ void CreaInicio(pNodo *P, int canciones, float precio, char artista[30], char al
     *P = (pNodo) malloc (sizeof(tipoNodo));
     printf("****Ingresa los datos del %clbum****\n",160);
     printf("Nombre del %clbum: ", 160);
-    strcpy();
-	printf("\n\nIngresa elemento: ");
+    strcpy((*P)->NomAlbum, album);
+    printf("\nNombre del artista: ");
+    strcpy((*P)->NomArtista, artista);
+	printf("\nN%cmero de canciones del %clbum: ", 163, 160);
     scanf("%d",&(*P)->NumCanciones);
+	printf("\nCosto del %clbum: $", 160);
+    scanf("%f",&(*P)->Precio);
     (*P)->liga=NULL;
     
     do {
     	Q = (pNodo) malloc (sizeof(tipoNodo));
-    	printf("\nIngresa elemento: ");
-    	scanf("%d",&Q->NumCanciones);
-        Q->liga= *P;
+    printf("****Ingresa los datos del %clbum****\n",160);
+    printf("Nombre del %clbum: ", 160);
+    strcpy(Q->NomAlbum, album);
+    printf("\nNombre del artista: ");
+    strcpy(Q->NomArtista, artista);
+	printf("\nN%cmero de canciones del %clbum: ", 163, 160);
+    scanf("%d",&Q->NumCanciones);
+	printf("\nCosto del %clbum: $", 160);
+    scanf("%f",&Q->Precio);
+        
+		Q->liga= *P;
         
         *P=Q;
         
-        printf("\nDesea agregar otro elemento 0/1\n");
+        printf("\nDesea agregar otro elemento:\nSi:1\tNo:0\n");
         scanf("%d", &opc);
     } while (opc == 1); 
 }
@@ -228,8 +240,6 @@ void buscarrecursivo(pNodo P, int X){
 main(){
 	pNodo P = NULL;
 	int opcion, X;
-	int canciones;
-	float precio;
 	char artista[30];
 	char album[30];
 	
@@ -253,7 +263,7 @@ main(){
 		
 		switch (opcion){
 			case 1:
-				CreaInicio(&P, canciones, precio, artista, album);
+				CreaInicio(&P, artista, album);
 				break;
 			case 2:
 			    creafinal(&P);

@@ -29,18 +29,30 @@ typedef struct nodo {
  
 typedef tipoNodo *pNodo; //Apuntador de nombre pNodo que apunta a un tipoNodo
 
-void CreaInicio(pNodo *P, char artista[30], char album[30]){
+void CreaInicio(pNodo *P){
 	pNodo Q;
 	int opc;
+	char artista[30], album[30];
     
-    *P = (pNodo) malloc (sizeof(tipoNodo));
-    strcpy((*P)->NomAlbum, album);
-    strcpy((*P)->NomArtista, artista);
+    system("cls");
+    printf("\n\t\t\tCREA INICIO\n");
+	
+	printf("\n****Ingresa los datos del %clbum****\n",160);
+	*P = (pNodo) malloc (sizeof(tipoNodo));
+	printf("Nombre del %clbum: ", 160);
+	fflush(stdin);
+	gets(album);
+	strcpy((*P)->NomAlbum, album);
+	printf("\nNombre del artista: ");
+	fflush(stdin);
+	gets(artista);
+	strcpy((*P)->NomArtista, artista);	
 	printf("\nN%cmero de canciones del %clbum: ", 163, 160);
     scanf("%d",&(*P)->NumCanciones);
 	printf("\nCosto del %clbum: $", 160);
     scanf("%f",&(*P)->Precio);
-    (*P)->liga=NULL;
+    
+	(*P)->liga=NULL;
     
     do {
     	Q = (pNodo) malloc (sizeof(tipoNodo));
@@ -234,8 +246,8 @@ void buscarrecursivo(pNodo P, int X){
 main(){
 	pNodo P = NULL;
 	int opcion, X;
-	char artista[30];
-	char album[30];
+	/*char artista[30];
+	char album[30];*/
 	
 	    do{
     	system ("cls");
@@ -257,18 +269,7 @@ main(){
 		
 		switch (opcion){
 			case 1:
-				
-				system("cls");
-    			printf("\n\t\t\tCREA INICIO\n");
-				printf("****Ingresa los datos del %clbum****\n",160);
-				printf("Nombre del %clbum: ", 160);
-				fflush(stdin);
-				gets(album);
-				printf("\nNombre del artista: ");
-				fflush(stdin);
-				gets(artista);
-
-				CreaInicio(&P, artista, album);
+				CreaInicio(&P);
 				break;
 			case 2:
 			    creafinal(&P);

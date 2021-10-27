@@ -56,10 +56,14 @@ void CreaInicio(pNodo *P){
     
     do {
     	Q = (pNodo) malloc (sizeof(tipoNodo));
-    printf("****Ingresa los datos del %clbum****\n",160);
+    printf("\n****Ingresa los datos del %clbum****\n",160);
     printf("Nombre del %clbum: ", 160);
+	fflush(stdin);
+	gets(album);
     strcpy(Q->NomAlbum, album);
     printf("\nNombre del artista: ");
+	fflush(stdin);
+	gets(artista);
     strcpy(Q->NomArtista, artista);
 	printf("\nN%cmero de canciones del %clbum: ", 163, 160);
     scanf("%d",&Q->NumCanciones);

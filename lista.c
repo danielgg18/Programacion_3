@@ -220,7 +220,7 @@ void InsertaAntes (pNodo *P) {
 	printf("\n\nIngresa la referencia: ");
     scanf("%d", &REF);
 	
-	while (Q->NumCanciones != REF&&BAND==TRUE){
+	while (Q->NumCanciones != REF && BAND==TRUE){
 		if (Q->liga != NULL){
 			T=Q;
 			Q=Q->liga;

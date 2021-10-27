@@ -53,7 +53,8 @@ void CreaInicio(pNodo *P){
     scanf("%d",&(*P)->NumCanciones);
 	printf("\nCosto del %clbum: $", 160);
     scanf("%f",&(*P)->Precio);
-	(*P)->Num = 1;
+	printf("\nN%cmero de referencia del %clbum: ", 163, 160);
+    scanf("%d",&(*P)->Num);
 	
 
     
@@ -75,10 +76,8 @@ void CreaInicio(pNodo *P){
 		scanf("%d",&Q->NumCanciones);
 		printf("\nCosto del %clbum: $", 160);
 		scanf("%f",&Q->Precio);
-
-		while ((*P)->Num >= 1){
-			(*P)->Num++;
-		}
+		printf("\nN%cmero de referencia del %clbum: ", 163, 160);
+    	scanf("%d",&Q->Num);
 		
         
 		Q->liga= *P;
@@ -112,6 +111,8 @@ void CreaFinal (pNodo *P){
     scanf("%d",&(*P)->NumCanciones);
 	printf("\nCosto del %clbum: $", 160);
     scanf("%f",&(*P)->Precio);
+	printf("\nN%cmero de referencia del %clbum: ", 163, 160);
+    scanf("%d",&(*P)->Num);
     
 	(*P)->liga=NULL;
     T=*P;
@@ -132,6 +133,8 @@ void CreaFinal (pNodo *P){
 		scanf("%d",&Q->NumCanciones);
 		printf("\nCosto del %clbum: $", 160);
 		scanf("%f",&Q->Precio);
+		printf("\nN%cmero de referencia del %clbum: ", 163, 160);
+    	scanf("%d",&Q->Num);
         
 		Q->liga= NULL;
         T->liga=Q;
@@ -153,7 +156,7 @@ void RecorreIterativo (pNodo P){
 		printf("\nArtista: %s\n", Q->NomArtista);
 		printf("\nTotal de canciones: %d\n", Q->NumCanciones);
 		printf("\nPrecio: $%.2f\n", Q->Precio);
-		printf("\n*%d*\n", Q->Num);
+		printf("\nNum de referencia: %d\n", Q->Num);
 
 		Q=Q->liga;
 	} while (Q != NULL);
@@ -167,6 +170,7 @@ void RecorreRecursivo (pNodo P){
 		printf("\nArtista: %s\n", P->NomArtista);
 		printf("\nTotal de canciones: %d\n", P->NumCanciones);
 		printf("\nPrecio: $%.2f\n", P->Precio);
+		printf("\nNum de referencia: %d\n", P->Num);
 		
 		RecorreRecursivo(P->liga);
 	}
@@ -199,6 +203,8 @@ void InsertaFinal(pNodo P){
 	scanf("%d",&Q->NumCanciones);
 	printf("\nCosto del %clbum: $", 160);
 	scanf("%f",&Q->Precio);
+	printf("\nN%cmero de referencia del %clbum: ", 163, 160);
+    scanf("%d",&Q->Num);
     
 	Q->liga=NULL;
     T->liga=Q;

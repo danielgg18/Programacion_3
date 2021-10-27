@@ -139,7 +139,7 @@ void RecorreIterativo (pNodo P){
 	Q=P;
 	
 	do {
-		printf("\n\t\t*INFO DE CADA ALBUM*\n");
+		printf("\n\t\t*INFO. ALBUM*\n");
 		printf("\nAlbum: %s\n", Q->NomAlbum);
 		printf("\nArtista: %s\n", Q->NomArtista);
 		printf("\nTotal de canciones: %d\n", Q->NumCanciones);
@@ -152,7 +152,7 @@ void RecorreIterativo (pNodo P){
 
 void RecorreRecursivo (pNodo P){
 	if (P!=NULL){
-		printf("\n\t\t*INFO DE CADA ALBUM*\n");
+		printf("\n\t\t*INFO. ALBUM*\n");
 		printf("\nAlbum: %s\n", P->NomAlbum);
 		printf("\nArtista: %s\n", P->NomArtista);
 		printf("\nTotal de canciones: %d\n", P->NumCanciones);
@@ -162,21 +162,35 @@ void RecorreRecursivo (pNodo P){
 	}
 }
 
-void insertafinal(pNodo P){
+void InsertaFinal(pNodo P){
 	
 	system("cls");
     printf("\n\t\t\tINSERTE AL FINAL\n");
     
 	pNodo Q, T;
+	char artista[30], album[30];
+
 	T=P;
 	while (T->liga != NULL){
 		T=T->liga;
 	}
     
     Q = (pNodo) malloc (sizeof(tipoNodo));
-    printf("\n\nIngresa elemento: ");
-    scanf("%d",&Q->NumCanciones);
-    Q->liga=NULL;
+	printf("\n****Ingresa los datos del %clbum****\n",160);
+	printf("Nombre del %clbum: ", 160);
+	fflush(stdin);
+	gets(album);
+	strcpy(Q->NomAlbum, album);
+	printf("\nNombre del artista: ");
+	fflush(stdin);
+	gets(artista);
+	strcpy(Q->NomArtista, artista);	
+	printf("\nN%cmero de canciones del %clbum: ", 163, 160);
+	scanf("%d",&Q->NumCanciones);
+	printf("\nCosto del %clbum: $", 160);
+	scanf("%f",&Q->Precio);
+    
+	Q->liga=NULL;
     T->liga=Q;
 }
 
@@ -324,7 +338,7 @@ main(){
 				printf("\n");
 				break;
 			case 5:
-				insertafinal(P);
+				InsertaFinal(P);
 				break;
 			case 6:
 				insertantes(&P);

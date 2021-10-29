@@ -81,129 +81,76 @@ void creafinal (pNodo *P){
 
 void recorreiterativo (pNodo P){
 	pNodo Q;
-	
-	Q=P;
+	if (P == NULL)
+	{
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+		Q=P;
 	
 	do {
 		printf("%d ", Q->informacion);
 		Q=Q->liga;
 	} while (Q != P);
 	
+	}
+	
 }
 
 void recorrecursivo (pNodo P, pNodo Inicio){
 
-	printf("%d ", P->informacion);
+	if (P == NULL){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+		printf("%d ", P->informacion);
 		
-	if (P->liga!=Inicio){
-		recorrecursivo(P->liga,Inicio);
+		if (P->liga!=Inicio){
+			recorrecursivo(P->liga,Inicio);
+		}
 	}
 }
 
 void insertafinal(pNodo P){
 	
-	system("cls");
-    printf("\n\t\t\tINSERTE AL FINAL\n");
-    
-	pNodo Q, T;
-	T=P;
-	while (T->liga != P){
-		T=T->liga;
+	if (P == NULL){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+		system("cls");
+		printf("\n\t\t\tINSERTE AL FINAL\n");
+		
+		pNodo Q, T;
+		T=P;
+		while (T->liga != P){
+			T=T->liga;
+		}
+		
+		Q = (pNodo) malloc (sizeof(tipoNodo));
+		printf("\n\nIngresa elemento: ");
+		scanf("%d",&Q->informacion);
+		Q->liga=P;
+		T->liga=Q;
 	}
-    
-    Q = (pNodo) malloc (sizeof(tipoNodo));
-    printf("\n\nIngresa elemento: ");
-    scanf("%d",&Q->informacion);
-    Q->liga=P;
-    T->liga=Q;
 }
 
 void insertantes (pNodo *P) {
+	
 	pNodo Q, X, T, Ultimo;
-	int REF;
-	int BAND=TRUE;
-	
-	Ultimo=T=Q=*P;
+		int REF;
+		int BAND=TRUE;
 
-	while (Ultimo->liga != *P){
-		Ultimo=Ultimo->liga;
-	}
-	
-	printf("\n\nIngresa la referencia: ");
-    scanf("%d", &REF);
-	
-	while (Q->informacion != REF&&BAND==TRUE){
-		if (Q->liga != *P){
-			T=Q;
-			Q=Q->liga;
-		} else {
-			BAND=FALSE;
+	if (REF <= 0){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+		
+		Ultimo=T=Q=*P;
+
+		while (Ultimo->liga != *P){
+			Ultimo=Ultimo->liga;
 		}
-	}
-	
-	if (BAND== TRUE ){
-	    X = (pNodo) malloc (sizeof(tipoNodo));
-	    printf("\n\nIngresa elemento: ");
-        scanf("%d",&(X)->informacion);
-        if (*P==Q){
-        	X->liga=*P;
-        	*P=X;
-        	Ultimo ->liga = *P;
-        }else{
-        	T->liga=X;
-        	X->liga=Q;
-        }
-
-	}
-}
-
-void eliminaprimero (pNodo *P){
-	pNodo Q, Ultimo;
-	
-	Ultimo=Q=*P;
-	
-	while (Ultimo->liga != *P){
-		Ultimo=Ultimo->liga;
-	}
-
-
-	if (Q->liga != *P){
-		*P=Q->liga;
-		Ultimo->liga= *P;
-	}else {
-		*P=NULL;
-	}
-	free(Q);
-}
-
-void eliminaultimo (pNodo *P){
-	pNodo Q,T;
-	
-	if ((*P)->liga==*P){
-		free(P);
-		*P=NULL;
-	}else {
-		Q=*P;
-		while (Q->liga != *P){
-			T=Q;
-			Q=Q->liga;
-		}
-		T->liga=*P;
-		free(Q);
-	}
-}
-
-void eliminaX (pNodo *P, int X){
-	pNodo Q, T;
-	int BAND=TRUE;	
-
-	Q=*P;
-	
-	if ( (*P)->informacion == X)
-		eliminaprimero(&(*P));
-	else {
-	
-		while (Q->informacion !=X && BAND==TRUE){
+		
+		printf("\n\nIngresa la referencia: ");
+		scanf("%d", &REF);
+		
+		while (Q->informacion != REF&&BAND==TRUE){
 			if (Q->liga != *P){
 				T=Q;
 				Q=Q->liga;
@@ -212,31 +159,122 @@ void eliminaX (pNodo *P, int X){
 			}
 		}
 		
-		if (BAND==FALSE){
-			printf("El elemento no fue encontrado");
-		}else {
+		if (BAND== TRUE ){
+			X = (pNodo) malloc (sizeof(tipoNodo));
+			printf("\n\nIngresa elemento: ");
+			scanf("%d",&(X)->informacion);
 			if (*P==Q){
-    			*P=Q->liga;
-			} else {
-				T->liga=Q->liga;
+				X->liga=*P;
+				*P=X;
+				Ultimo ->liga = *P;
+			}else{
+				T->liga=X;
+				X->liga=Q;
 			}
-			free(Q);
+
+		}
+	}
+}
+
+void eliminaprimero (pNodo *P){
+	
+	if ((*P) == NULL){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+		pNodo Q, Ultimo;
 		
-		}	
+		Ultimo=Q=*P;
+		
+		while (Ultimo->liga != *P){
+			Ultimo=Ultimo->liga;
+		}
+
+
+		if (Q->liga != *P){
+			*P=Q->liga;
+			Ultimo->liga= *P;
+		}else {
+			*P=NULL;
+		}
+		free(Q);
+	}
+}
+
+void eliminaultimo (pNodo *P){
+	
+	if ((*P) == NULL){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+		pNodo Q,T;
+		
+		if ((*P)->liga==*P){
+			free(P);
+			*P=NULL;
+		}else {
+			Q=*P;
+			while (Q->liga != *P){
+				T=Q;
+				Q=Q->liga;
+			}
+			T->liga=*P;
+			free(Q);
+		}
+	}
+}
+
+void eliminaX (pNodo *P, int X){
+	
+	if ((*P) == NULL){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+		pNodo Q, T;
+		int BAND=TRUE;	
+
+		Q=*P;
+		
+		if ( (*P)->informacion == X)
+			eliminaprimero(&(*P));
+		else {
+		
+			while (Q->informacion !=X && BAND==TRUE){
+				if (Q->liga != *P){
+					T=Q;
+					Q=Q->liga;
+				} else {
+					BAND=FALSE;
+				}
+			}
+			
+			if (BAND==FALSE){
+				printf("El elemento no fue encontrado");
+			}else {
+				if (*P==Q){
+					*P=Q->liga;
+				} else {
+					T->liga=Q->liga;
+				}
+				free(Q);
+			
+			}	
+		}
 	}
 }
 
 void buscarrecursivo(pNodo P, pNodo Inicio, int X){
 	
-	if (P->informacion == X){
-			printf("El elemento fue encontrado\n");
-		}else{
-			if(P->liga != Inicio){
-				buscarrecursivo(P->liga, Inicio, X);
-			} else {
-				printf("El elemento no se encuentra en la lista\n");
+	if (P == NULL){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+		if (P->informacion == X){
+				printf("El elemento fue encontrado\n");
+			}else{
+				if(P->liga != Inicio){
+					buscarrecursivo(P->liga, Inicio, X);
+				} else {
+					printf("El elemento no se encuentra en la lista\n");
+				}
 			}
-		}
+	}
 }
 
 main(){
@@ -245,7 +283,7 @@ main(){
 	
 	    do{
     	system ("cls");
-		printf ("\n\t\t\tLISTA\n");
+		printf ("\n\t\t\tLISTA CIRCULAR\n");
     	printf ("\n 1) CREA INICIO");
     	printf ("\n 2) CREA FINAL");
     	printf ("\n 3) RECORRE ITERATIVO");

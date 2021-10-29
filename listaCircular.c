@@ -148,6 +148,7 @@ void creafinal (pNodo *P){
 
 void recorreiterativo (pNodo P){
 	pNodo Q;
+	
 	if (P == NULL)
 	{
 		printf("\n\tNo existen elementos en la lista\n");
@@ -155,12 +156,17 @@ void recorreiterativo (pNodo P){
 		Q=P;
 	
 	do {
-		printf("%d ", Q->NumCanciones);
+		printf("\n\t\t*INFO. ALBUM*\n");
+		printf("\nAlbum: %s\n", Q->NomAlbum);
+		printf("\nArtista: %s\n", Q->NomArtista);
+		printf("\nTotal de canciones: %d\n", Q->NumCanciones);
+		printf("\nPrecio: $%.2f\n", Q->Precio);
+		printf("\nNum de referencia: %d\n", Q->Num);
+		
 		Q=Q->liga;
 	} while (Q != P);
 	
 	}
-	
 }
 
 void recorrecursivo (pNodo P, pNodo Inicio){
@@ -168,10 +174,17 @@ void recorrecursivo (pNodo P, pNodo Inicio){
 	if (P == NULL){
 		printf("\n\tNo existen elementos en la lista\n");
 	} else {
-		printf("%d ", P->NumCanciones);
+		printf("\n\t\t*INFO. ALBUM*\n");
+		printf("\nAlbum: %s\n", P->NomAlbum);
+		printf("\nArtista: %s\n", P->NomArtista);
+		printf("\nTotal de canciones: %d\n", P->NumCanciones);
+		printf("\nPrecio: $%.2f\n", P->Precio);
+		printf("\nNum de referencia: %d\n", P->Num);
 		
 		if (P->liga!=Inicio){
 			recorrecursivo(P->liga,Inicio);
+		} else {
+			printf("\nSolo existe este elemento");
 		}
 	}
 }

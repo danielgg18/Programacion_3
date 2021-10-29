@@ -183,13 +183,14 @@ void recorrecursivo (pNodo P, pNodo Inicio){
 		
 		if (P->liga!=Inicio){
 			recorrecursivo(P->liga,Inicio);
-		} else {
-			printf("\nSolo existe este elemento");
-		}
+		} 
 	}
 }
 
 void insertafinal(pNodo P){
+	
+	pNodo Q, T;
+	char artista[30], album[30];
 	
 	if (P == NULL){
 		printf("\n\tNo existen elementos en la lista\n");
@@ -197,15 +198,29 @@ void insertafinal(pNodo P){
 		system("cls");
 		printf("\n\t\t\tINSERTE AL FINAL\n");
 		
-		pNodo Q, T;
 		T=P;
 		while (T->liga != P){
 			T=T->liga;
 		}
 		
 		Q = (pNodo) malloc (sizeof(tipoNodo));
-		printf("\n\nIngresa elemento: ");
+
+		printf("\n****Ingresa los datos del %clbum****\n",160);
+		printf("Nombre del %clbum: ", 160);
+		fflush(stdin);
+		gets(album);
+		strcpy(Q->NomAlbum, album);
+		printf("\nNombre del artista: ");
+		fflush(stdin);
+		gets(artista);
+		strcpy(Q->NomArtista, artista);	
+		printf("\nN%cmero de canciones del %clbum: ", 163, 160);
 		scanf("%d",&Q->NumCanciones);
+		printf("\nCosto del %clbum: $", 160);
+		scanf("%f",&Q->Precio);
+		printf("\nN%cmero de referencia del %clbum: ", 163, 160);
+		scanf("%d",&Q->Num);
+		
 		Q->liga=P;
 		T->liga=Q;
 	}
@@ -216,6 +231,7 @@ void insertantes (pNodo *P) {
 	pNodo Q, X, T, Ultimo;
 		int REF;
 		int BAND=TRUE;
+		char artista[30], album[30];
 
 	if (REF <= 0){
 		printf("\n\tNo existen elementos en la lista\n");
@@ -230,7 +246,7 @@ void insertantes (pNodo *P) {
 		printf("\n\nIngresa la referencia: ");
 		scanf("%d", &REF);
 		
-		while (Q->NumCanciones != REF&&BAND==TRUE){
+		while (Q->NumCanciones != REF && BAND==TRUE){
 			if (Q->liga != *P){
 				T=Q;
 				Q=Q->liga;
@@ -241,8 +257,23 @@ void insertantes (pNodo *P) {
 		
 		if (BAND== TRUE ){
 			X = (pNodo) malloc (sizeof(tipoNodo));
-			printf("\n\nIngresa elemento: ");
-			scanf("%d",&(X)->NumCanciones);
+
+			printf("\n****Ingresa los datos del %clbum****\n",160);
+			printf("Nombre del %clbum: ", 160);
+			fflush(stdin);
+			gets(album);
+			strcpy(X->NomAlbum, album);
+			printf("\nNombre del artista: ");
+			fflush(stdin);
+			gets(artista);
+			strcpy(X->NomArtista, artista);	
+			printf("\nN%cmero de canciones del %clbum: ", 163, 160);
+			scanf("%d",&X->NumCanciones);
+			printf("\nCosto del %clbum: $", 160);
+			scanf("%f",&X->Precio);
+			printf("\nN%cmero de referencia del %clbum: ", 163, 160);
+			scanf("%d",&X->Num);
+			
 			if (*P==Q){
 				X->liga=*P;
 				*P=X;

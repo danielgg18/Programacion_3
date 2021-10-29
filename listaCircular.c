@@ -380,7 +380,7 @@ void buscarrecursivo(pNodo P, pNodo Inicio, int X){
 	if (P == NULL){
 		printf("\n\tNo existen elementos en la lista\n");
 	} else {
-		if (P->NumCanciones == X){
+		if (P->Num == X){
 				printf("El elemento fue encontrado\n");
 			}else{
 				if(P->liga != Inicio){

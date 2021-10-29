@@ -289,10 +289,11 @@ void insertantes (pNodo *P) {
 
 void eliminaprimero (pNodo *P){
 	
+	pNodo Q, Ultimo;
+
 	if ((*P) == NULL){
 		printf("\n\tNo existen elementos en la lista\n");
 	} else {
-		pNodo Q, Ultimo;
 		
 		Ultimo=Q=*P;
 		
@@ -313,10 +314,11 @@ void eliminaprimero (pNodo *P){
 
 void eliminaultimo (pNodo *P){
 	
+	pNodo Q,T;
+
 	if ((*P) == NULL){
 		printf("\n\tNo existen elementos en la lista\n");
 	} else {
-		pNodo Q,T;
 		
 		if ((*P)->liga==*P){
 			free(P);
@@ -335,19 +337,21 @@ void eliminaultimo (pNodo *P){
 
 void eliminaX (pNodo *P, int X){
 	
+	pNodo Q, T;
+	int BAND=TRUE;	
+
+	
 	if ((*P) == NULL){
 		printf("\n\tNo existen elementos en la lista\n");
 	} else {
-		pNodo Q, T;
-		int BAND=TRUE;	
-
+		
 		Q=*P;
 		
-		if ( (*P)->NumCanciones == X)
+		if ( (*P)->Num == X)
 			eliminaprimero(&(*P));
 		else {
 		
-			while (Q->NumCanciones !=X && BAND==TRUE){
+			while (Q->Num !=X && BAND==TRUE){
 				if (Q->liga != *P){
 					T=Q;
 					Q=Q->liga;

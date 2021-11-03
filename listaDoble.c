@@ -245,8 +245,17 @@ void recorreiterativoinv (pNodo P){
 		P: Apuntador al primer elemento de la lista (apuntador a una estructura tipoNodo). 
 */
 void recorrecursivo (pNodo P){
-	if (P!=NULL){
-		printf("%d ", P->informacion);
+	
+    if (P == NULL){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+		printf("\n\t\t*INFO. ALBUM*\n");
+		printf("\nAlbum: %s\n", P->NomAlbum);
+		printf("\nArtista: %s\n", P->NomArtista);
+		printf("\nTotal de canciones: %d\n", P->NumCanciones);
+		printf("\nPrecio: $%.2f\n", P->Precio);
+		printf("\nNum de referencia: %d\n", P->Num);
+
 		recorrecursivo(P->siguiente);
 	}
 }
@@ -260,23 +269,43 @@ void recorrecursivo (pNodo P){
 */
 void insertafinal(pNodo P){
 	
-	system("cls");
-    printf("\n\t\t\tINSERTE AL FINAL\n");
-    
 	pNodo Q, T;
+    char artista[30], album[30];
 
-	T=P;
-	while (T->siguiente != NULL){
-		T=T->siguiente;
-	}
-    
-    Q = (pNodo) malloc (sizeof(tipoNodo));
-    printf("\n\nIngresa elemento: ");
-    scanf("%d",&Q->informacion);
-    Q->siguiente=NULL;
-    Q->anterior=T;
-    T->siguiente=Q;
+    if (P == NULL){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+        system("cls");
+        printf("\n\t\t\tINSERTE AL FINAL\n");
+	    
+        T=P;
+        while (T->siguiente != NULL){
+            T=T->siguiente;
+        }
+        
+        Q = (pNodo) malloc (sizeof(tipoNodo));
+        
+        printf("\n****Ingresa los datos del %clbum****\n",160);
+		printf("Nombre del %clbum: ", 160);
+		fflush(stdin);
+		gets(album);
+		strcpy(Q->NomAlbum, album);
+		printf("\nNombre del artista: ");
+		fflush(stdin);
+		gets(artista);
+		strcpy(Q->NomArtista, artista);	
+		printf("\nN%cmero de canciones del %clbum: ", 163, 160);
+		scanf("%d",&Q->NumCanciones);
+		printf("\nCosto del %clbum: $", 160);
+		scanf("%f",&Q->Precio);
+		printf("\nN%cmero de referencia del %clbum: ", 163, 160);
+		scanf("%d",&Q->Num);
+        
+        Q->siguiente=NULL;
+        Q->anterior=T;
+        T->siguiente=Q;
 
+    }
 }
 
 

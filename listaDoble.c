@@ -244,7 +244,7 @@ void recorreiterativoinv (pNodo P){
    Parametros: 
 		P: Apuntador al primer elemento de la lista (apuntador a una estructura tipoNodo). 
 */
-void recorrecursivo (pNodo P){
+void recorrecursivo (pNodo P, pNodo inicio){
 	
     if (P == NULL){
 		printf("\n\tNo existen elementos en la lista\n");
@@ -256,7 +256,10 @@ void recorrecursivo (pNodo P){
 		printf("\nPrecio: $%.2f\n", P->Precio);
 		printf("\nNum de referencia: %d\n", P->Num);
 
-		recorrecursivo(P->siguiente);
+		if (P->siguiente != inicio){
+            recorrecursivo(P->siguiente, inicio);
+        }
+        
 	}
 }
 
@@ -317,7 +320,7 @@ void insertafinal(pNodo P){
 		P: Apuntador al primer elemento de la lista (apuntador a una estructura tipoNodo). 
 */
 void insertantes (pNodo *P) {
-	pNodo Q, X, T;
+	pNodo Q, X, T, Ultimo;
 	int REF;
 	int BAND=TRUE;
     char artista[30], album[30];
@@ -325,10 +328,14 @@ void insertantes (pNodo *P) {
     if (REF <= 0){
 		printf("\n\tNo existen elementos en la lista\n");
 	} else {
-        Q=*P;
-        
+        Ultimo=T=Q=*P;
+        while (Ultimo->siguiente != *P){
+           Ultimo=Ultimo->siguiente;
+        }
+
         printf("\n\nIngresa la referencia: ");
         scanf("%d", &REF);
+        //Q=*P;
         
         while (Q->Num != REF && BAND==TRUE){
             if (Q->siguiente != NULL){
@@ -538,7 +545,7 @@ main(){
 				printf("\n");
 	           	break;
 			case '4':
-				recorrecursivo(P);
+				recorrecursivo(P, P);
 				printf("\n");
 	           	break;
 

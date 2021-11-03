@@ -180,39 +180,60 @@ void creafinal (pNodo *P){
 void recorreiterativo (pNodo P){
 	pNodo Q;
 	
-	Q=P;
-	
-	do {
-		printf("%d ", Q->informacion);
+	if (P == NULL)
+	{
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+        Q=P;
+        
+        do {
+            printf("\n\t\t*INFO. ALBUM*\n");
+            printf("\nAlbum: %s\n", Q->NomAlbum);
+            printf("\nArtista: %s\n", Q->NomArtista);
+            printf("\nTotal de canciones: %d\n", Q->NumCanciones);
+            printf("\nPrecio: $%.2f\n", Q->Precio);
+            printf("\nNum de referencia: %d\n", Q->Num);
 
-		Q=Q->siguiente;
-	} while (Q != NULL);
-	
+            Q=Q->siguiente;
+        } while (Q != NULL);
+    }
+
 }
 
 /* Nombre: Funcion recorreiterativoinv
-   Fecha: 10/10/2019
+   Fecha: 02/11/2021
    
-   Descripcion:Funcion que imprime los elementos de una lista iterativamente.
+   Descripcion:Funcion que imprime los elementos de una lista iterativamente de forma inversa.
 
    Parametros: 
 		P: Apuntador al primer elemento de la lista (apuntador a una estructura tipoNodo). 
 */
 void recorreiterativoinv (pNodo P){
 	pNodo Q;
-	
-	Q=P;
-	while (Q->siguiente != NULL){
-		Q=Q->siguiente;
-	}
 
+    if (P == NULL)
+	{
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
 	
-	do {
-		printf("%d ", Q->informacion);
+        Q=P;
+        while (Q->siguiente != NULL){
+            Q=Q->siguiente;
+        }
 
-		Q=Q->anterior;
-	} while (Q != NULL);
+        
+        do {
+            printf("\n\t\t*INFO. ALBUM*\n");
+            printf("\nAlbum: %s\n", Q->NomAlbum);
+            printf("\nArtista: %s\n", Q->NomArtista);
+            printf("\nTotal de canciones: %d\n", Q->NumCanciones);
+            printf("\nPrecio: $%.2f\n", Q->Precio);
+            printf("\nNum de referencia: %d\n", Q->Num);
+
+            Q=Q->anterior;
+        } while (Q != NULL);
 	
+    }
 }
 
 

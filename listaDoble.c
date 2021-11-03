@@ -320,39 +320,59 @@ void insertantes (pNodo *P) {
 	pNodo Q, X, T;
 	int REF;
 	int BAND=TRUE;
+    char artista[30], album[30];
 	
-	Q=*P;
-	
-	printf("\n\nIngresa la referencia: ");
-    scanf("%d", &REF);
-	
-	while (Q->informacion != REF && BAND==TRUE){
-		if (Q->siguiente != NULL){
-			T=Q;
-			Q=Q->siguiente;
-		} else {
-			BAND=FALSE;
-		}
-	}
-	
-	if (BAND == TRUE ){
-	    X = (pNodo) malloc (sizeof(tipoNodo));
-	    printf("\n\nIngresa elemento: ");
-        scanf("%d",&(X)->informacion);
-        if (*P==Q){
-        	X->anterior=NULL;
-        	X->siguiente=*P;
-        	(*P)->anterior=X;
-        	*P=X;
-        }else{
-        	T->siguiente=X;
-        	X->anterior=T;
-        	X->siguiente=Q;
-        	Q->anterior=X;
+    if (REF <= 0){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+        Q=*P;
+        
+        printf("\n\nIngresa la referencia: ");
+        scanf("%d", &REF);
+        
+        while (Q->Num != REF && BAND==TRUE){
+            if (Q->siguiente != NULL){
+                T=Q;
+                Q=Q->siguiente;
+            } else {
+                BAND=FALSE;
+            }
+        }
+        
+        if (BAND == TRUE ){
+            X = (pNodo) malloc (sizeof(tipoNodo));
+            
+            printf("\n****Ingresa los datos del %clbum****\n",160);
+			printf("Nombre del %clbum: ", 160);
+			fflush(stdin);
+			gets(album);
+			strcpy(X->NomAlbum, album);
+			printf("\nNombre del artista: ");
+			fflush(stdin);
+			gets(artista);
+			strcpy(X->NomArtista, artista);	
+			printf("\nN%cmero de canciones del %clbum: ", 163, 160);
+			scanf("%d",&X->NumCanciones);
+			printf("\nCosto del %clbum: $", 160);
+			scanf("%f",&X->Precio);
+			printf("\nN%cmero de referencia del %clbum: ", 163, 160);
+			scanf("%d",&X->Num);
+            
+            if (*P==Q){
+                X->anterior=NULL;
+                X->siguiente=*P;
+                (*P)->anterior=X;
+                *P=X;
+            }else{
+                T->siguiente=X;
+                X->anterior=T;
+                X->siguiente=Q;
+                Q->anterior=X;
+
+            }
 
         }
-
-	}
+    }
 }
 
 
@@ -367,16 +387,20 @@ void insertantes (pNodo *P) {
 void eliminaprimero (pNodo *P){
 	pNodo Q;
 	
-	Q=*P;
-	
-	if (Q->siguiente != NULL){
-		*P=Q->siguiente;
-		(*P)->anterior=NULL;
-	}else {
-		*P=NULL;
-	}
+	if ((*P) == NULL){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+        Q=*P;
+        
+        if (Q->siguiente != NULL){
+            *P=Q->siguiente;
+            (*P)->anterior=NULL;
+        }else {
+            *P=NULL;
+        }
 
-	free(Q);
+        free(Q);
+        }
 }
 
 

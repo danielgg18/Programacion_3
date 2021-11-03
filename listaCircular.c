@@ -246,7 +246,7 @@ void insertantes (pNodo *P) {
 		printf("\n\nIngresa la referencia: ");
 		scanf("%d", &REF);
 		
-		while (Q->NumCanciones != REF && BAND==TRUE){
+		while (Q->Num != REF && BAND==TRUE){
 			if (Q->liga != *P){
 				T=Q;
 				Q=Q->liga;

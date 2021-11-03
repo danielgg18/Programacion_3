@@ -414,18 +414,22 @@ void eliminaprimero (pNodo *P){
 void eliminaultimo (pNodo *P){
 	pNodo Q,T;
 	
-	if ((*P)->siguiente==NULL){
-		free(P);
-		*P=NULL;
-	}else {
-		Q=*P;
-		while (Q->siguiente != NULL){
-			T=Q;
-			Q=Q->siguiente;
-		}
-		T->siguiente=NULL;
-		free(Q);
-	}
+	if ((*P) == NULL){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+        if ((*P)->siguiente==NULL){
+            free(P);
+            *P=NULL;
+        }else {
+            Q=*P;
+            while (Q->siguiente != NULL){
+                T=Q;
+                Q=Q->siguiente;
+            }
+            T->siguiente=NULL;
+            free(Q);
+        }
+    }
 }
 
 /* Nombre: Funcion eliminaX
@@ -440,29 +444,33 @@ void eliminaX (pNodo *P, int X){
 	pNodo Q, T;
 	int BAND=TRUE;	
 
-	Q=*P;
-	
-	while (Q->informacion !=X && BAND==TRUE){
-		if (Q->siguiente != NULL){
-			T=Q;
-			Q=Q->siguiente;
-		} else {
-			BAND=FALSE;
-		}
-	}
-	
-	if (BAND==FALSE){
-		printf("El elemento no fue encontrado");
-	}else {
-		if (*P==Q){
-			*P=Q->siguiente;
-			(*P)->anterior= NULL;
-		} else {
-			T->siguiente=Q->siguiente;
-			(Q->siguiente)->anterior=T;
-		}
-		free(Q);
-	}	
+	if ((*P) == NULL){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+        Q=*P;
+        
+        while (Q->Num !=X && BAND==TRUE){
+            if (Q->siguiente != NULL){
+                T=Q;
+                Q=Q->siguiente;
+            } else {
+                BAND=FALSE;
+            }
+        }
+        
+        if (BAND==FALSE){
+            printf("El elemento no fue encontrado");
+        }else {
+            if (*P==Q){
+                *P=Q->siguiente;
+                (*P)->anterior= NULL;
+            } else {
+                T->siguiente=Q->siguiente;
+                (Q->siguiente)->anterior=T;
+            }
+            free(Q);
+        }	
+    }
 }
 
 

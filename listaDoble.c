@@ -481,18 +481,25 @@ void eliminaX (pNodo *P, int X){
    Parametros: 
 		P: Apuntador al primer elemento de la lista (apuntador a una estructura tipoNodo). 
 		X: valor a buscar
+        inicio: indica el inicio de la lista
 */
-void buscarrecursivo(pNodo P, int X){
-	if(P != NULL){
-		if (P->informacion == X){
+void buscarrecursivo(pNodo P, pNodo inicio, int X){
+	if (P == NULL){
+		printf("\n\tNo existen elementos en la lista\n");
+	} else {
+		if (P->Num == X){
 			printf("El elemento fue encontrado\n");
 		}else{
-			buscarrecursivo(P->siguiente, X);
-		}
-	}else{
-		printf("El elemento no se encuentra en la lista\n");
-	}
+            if (P->siguiente != NULL){
+                buscarrecursivo(P->siguiente, inicio, X);
+            }else{
+		        printf("El elemento no se encuentra en la lista\n");
+	        }
+        }
+            
+    }
 }
+
 
 //Funcion principal main
 main(){
@@ -514,9 +521,6 @@ main(){
     	printf ("\n 9) ELIMINA ELEMENTO");
     	printf ("\n a) BUSCA ELEMENTO (RECURSIVO)");
     	printf ("\n b) RECORRE ITERATIVO INVERSO");
-    	printf ("\n c) RECORRE RECURSIVO INVERSO");
-    	printf ("\n c) BUSCA ELEMENTO INVERSO");
-
     	printf ("\n 0) SALIR");
 
     	printf ("\n\n Seleccione una opcion: ");
@@ -559,23 +563,13 @@ main(){
 			case 'A':
 				printf("\n\nIngresa el elemento a buscar: ");
 				scanf("%d", &X);
-				buscarrecursivo(P, X);
+				buscarrecursivo(P, P, X);
 				break;
 			case 'b':
 			case 'B':
 				recorreiterativoinv(P);
 				printf("\n");
 				break;
-			case 'c':
-			case 'C':
-				printf("Por hacer!!!\n");
-				break;
-			case 'd':
-			case 'D':
-				printf("Por hacer!!!\n");
-				break;
-
-
 			case '0':
 				break;
 			default:

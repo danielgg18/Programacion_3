@@ -56,12 +56,12 @@ void escribir_registros(pNodo P)
 		do {
 			gets(nodo.NomAlbum);
 			fflush(stdin);
-			strcpy(Q->NomArtista, nodo.NomArtista);
+			gets(nodo.NomArtista);
 			fflush(stdin);
 			nodo.NumCanciones = Q->NumCanciones;
 			nodo.Precio = Q->Precio;
 			nodo.Num = Q->Num;
-			strcpy(Q->TipoTran, nodo.TipoTran);
+			gets(nodo.TipoTran);
 			fflush(stdin);
 			nodo.siguiente= NULL;
 			fwrite(&nodo,sizeof(tipoNodo),1,arch);  //escritura del registro

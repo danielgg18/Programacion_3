@@ -66,7 +66,7 @@ void creafinal (pNodo *P){
     scanf("%f",&(*P)->Precio);
 	printf("\nN%cmero de referencia del %clbum: ", 163, 160);
     scanf("%d",&(*P)->Num);
-	printf("Concepto: ");
+	printf("\nConcepto: ");
 	fflush(stdin);
 	gets(transaccion);
 	strcpy((*P)->TipoTran, transaccion);
@@ -94,7 +94,7 @@ void creafinal (pNodo *P){
 		scanf("%f",&Q->Precio);
 		printf("\nN%cmero de referencia del %clbum: ", 163, 160);
     	scanf("%d",&Q->Num);
-		printf("Concepto: ");
+		printf("\nConcepto: ");
 		fflush(stdin);
 		gets(transaccion);
 		strcpy(Q->TipoTran, transaccion);
@@ -133,7 +133,7 @@ void recorreiterativo (pNodo P){
             printf("\nTotal de canciones: %d\n", Q->NumCanciones);
             printf("\nPrecio: $%.2f\n", Q->Precio);
             printf("\nNum de referencia: %d\n", Q->Num);
-			printf("\nTipo de transacci%cn: %d\n", 162, Q->TipoTran);
+			printf("\nTipo de transacci%cn: %c\n", 162, Q->TipoTran);
 
             Q=Q->siguiente;
         } while (Q != NULL);
@@ -181,7 +181,7 @@ void insertafinal(pNodo P){
 		scanf("%f",&Q->Precio);
 		printf("\nN%cmero de referencia del %clbum: ", 163, 160);
 		scanf("%d",&Q->Num);
-		printf("Concepto: ");
+		printf("\nConcepto: ");
 		fflush(stdin);
 		gets(transaccion);
 		strcpy(Q->TipoTran, transaccion);

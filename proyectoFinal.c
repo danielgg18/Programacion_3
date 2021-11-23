@@ -265,9 +265,9 @@ main(){
     	printf ("\n 3) Agregar datos de nueva transacci%cn", 162); // Se crea un nuevo nodo con los datos de la venta y se coloca al final
     	//printf ("\n 6) INSERTA ANTES");
     	//printf ("\n 7) ELIMINA PRIMERO");
-    	printf ("\n 4) Cancelar la %cltima transacción", 163); //se elimina el ultimo nodo de la lista
+    	printf ("\n 4) Cancelar la %cltima transacci%cn", 163, 162); //se elimina el ultimo nodo de la lista
     	//printf ("\n 9) Eliminar venta");
-    	printf ("\n 5) Buscar una transacción"); // se realiza una busqueda recursiva utilizando el numero de refrencia del disco y se imprime el registro
+    	printf ("\n 5) Buscar una transacci%cn", 162); // se realiza una busqueda recursiva utilizando el numero de refrencia del disco y se imprime el registro
     	//printf ("\n b) RECORRE ITERATIVO INVERSO");
     	printf ("\n 0) SALIR");
 

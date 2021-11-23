@@ -105,7 +105,7 @@ void creafinal (pNodo *P){
         
         T=Q;
         
-        printf("\nDesea agregar otro elemento:\nSi:1\tNo:0\n");
+        printf("\nDesea agregar otro elemento:\nSi:1\tNo:0: ");
         scanf("%d", &opc);
     } while (opc == 1); 
 }
@@ -127,7 +127,7 @@ void recorreiterativo (pNodo P){
         Q=P;
         
         do {
-            printf("\n\t\t*INFO. ALBUM*\n");
+            printf("\n\t\t***INFO. ALBUM***\n");
             printf("\nAlbum: %s\n", Q->NomAlbum);
             printf("\nArtista: %s\n", Q->NomArtista);
             printf("\nTotal de canciones: %d\n", Q->NumCanciones);

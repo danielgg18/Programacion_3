@@ -293,7 +293,7 @@ main(){
 				scanf("%d", &X);
 				buscarrecursivo(P, P, X);
 				break;
-			case 0:
+			case 6:
 				break;
 			default:
 				printf ("\n Opcion no valida. Intenta de nuevo.\n\n");

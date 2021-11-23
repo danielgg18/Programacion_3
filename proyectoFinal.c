@@ -95,28 +95,25 @@ void leer_registros (pNodo *P) {
 		 rewind (arch);
  
 	    if (fread (&nodo, tamanio, 1, arch) != 0 ){
-	    	    *P = (pNodo) malloc (sizeof(tipoNodo));
+	    	    /**P = (pNodo) malloc (sizeof(tipoNodo));
 	    		strcpy(nodo.NomAlbum, (*P)->NomAlbum);
-				fflush(stdin);
 				strcpy((*P)->NomArtista, nodo.NomArtista);
 				(*P)->NumCanciones=nodo.NumCanciones;
 				(*P)->Precio=nodo.Precio;
 				(*P)->Num=nodo.Num;
-				fflush(stdin);
 				strcpy((*P)->TipoTran, nodo.TipoTran);
 	    		(*P)->siguiente=NULL;
-	    		T=*P;
+	    		T=*P;*/
+				recorreiterativo(*P);
 	    		//printf("Primer elemento: %i\n", nodo.NumCanciones);
 		}
 	   	while (fread (&nodo, tamanio, 1, arch) != 0 ){
 	   	   	Q = (pNodo) malloc (sizeof(tipoNodo));
 			gets(nodo.NomAlbum);
-			fflush(stdin);
 			strcpy(Q->NomArtista, nodo.NomArtista);
 	 		Q->NumCanciones=nodo.NumCanciones;
 			Q->Precio=nodo.Precio;
 			Q->Num=nodo.Num;
-			fflush(stdin);
 			strcpy(Q->TipoTran, nodo.TipoTran);
 	        Q->siguiente= NULL;
 	        

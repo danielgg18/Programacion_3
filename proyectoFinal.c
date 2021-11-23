@@ -54,8 +54,7 @@ void escribir_registros(pNodo P)
 	 	rewind (arch);
 		//fseek(arch, 0L, SEEK_SET);
 		do {
-			fprintf(arch,"Nombre del album:");
-			strcpy(Q->NomAlbum, nodo.NomAlbum);
+			gets(nodo.NomAlbum);
 			fflush(stdin);
 			strcpy(Q->NomArtista, nodo.NomArtista);
 			fflush(stdin);

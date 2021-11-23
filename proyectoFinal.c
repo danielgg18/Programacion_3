@@ -4,12 +4,14 @@
 
                        LICENCIATURA EN INFORMATICA
                            ESTRUCTURA DE DATOS
-  Name: listaDoble.c 
-  Description: Programa que permite el gestiomiento una lista doblemente ligada.           
+  Nombre: proyectoFinal.c
+  Autor: Daniel Garcia
+  Fecha: 24/11/21
+  Descripcion: Programa que registra en un archivo las transacciones que se realizan diariamente en un tienda de discos musicales.      
 
 ***************************************************************************************************************************/
 
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -22,6 +24,7 @@ typedef struct nodo {
     int NumCanciones;   //Variable de tipo entero
     char NomArtista[30];
     char NomAlbum[30];
+    char TipoTran[10];
     float Precio;
     int Num;
 	struct nodo *anterior; //Apuntador que apunta a una estructura nodo
@@ -31,8 +34,7 @@ typedef struct nodo {
 typedef tipoNodo *pNodo; //Apuntador de nombre pNodo que apunta a un tipoNodo
 
 /* Nombre: Funcion creafinal
-   Fecha: 02/11/2021
-   
+
    Descripcion:	Funcion que crea una lista y 
    				agrega los elementos por el final.
 
@@ -100,7 +102,6 @@ void creafinal (pNodo *P){
 }
 
 /* Nombre: Funcion recorreiterativo
-   Fecha: 10/10/2019
    
    Descripcion:Funcion que imprime los elementos de una lista iterativamente.
 

@@ -24,7 +24,7 @@ typedef struct nodo {
     int NumCanciones;   //Numero de canciones del disco
     char NomArtista[30];
     char NomAlbum[30];
-    char TipoTran[10];
+    char TipoTran[12];
     float Precio;
     int Num;
 	struct nodo *anterior; //Apuntador que apunta a una estructura nodo
@@ -43,8 +43,8 @@ typedef tipoNodo *pNodo; //Apuntador de nombre pNodo que apunta a un tipoNodo
 */
 void creafinal (pNodo *P){
 	pNodo Q, T;
-	int opc;
-    char artista[30], album[30], transaccion[10];
+	int opc; 
+    char artista[30], album[30], transaccion[12];
 	
 	system("cls");
     printf("\n\t\t\tCREA FINAL\n");
@@ -133,7 +133,7 @@ void recorreiterativo (pNodo P){
             printf("\nTotal de canciones: %d\n", Q->NumCanciones);
             printf("\nPrecio: $%.2f\n", Q->Precio);
             printf("\nNum de referencia: %d\n", Q->Num);
-			printf("\nTipo de transacci%cn: %c\n", 162, Q->TipoTran);
+			printf("\nTipo de transacci%cn: %s\n", 162, Q->TipoTran);
 
             Q=Q->siguiente;
         } while (Q != NULL);
@@ -151,7 +151,7 @@ void recorreiterativo (pNodo P){
 void insertafinal(pNodo P){
 	
 	pNodo Q, T;
-    char artista[30], album[30], transaccion[10];
+    char artista[30], album[30], transaccion[12];
 
     if (P == NULL){
 		printf("\n\tNo existen elementos en la lista\n");

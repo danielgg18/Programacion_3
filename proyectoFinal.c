@@ -27,11 +27,87 @@ typedef struct nodo {
     char TipoTran[12];
     float Precio;
     int Num;
-	struct nodo *anterior; //Apuntador que apunta a una estructura nodo
+	//struct nodo *anterior; //Apuntador que apunta a una estructura nodo
 	struct nodo *siguiente; //Apuntador que apunta a una estructura nodo   struct nodo *liga; //Apuntador que apunta a una estructura nodo
 } tipoNodo; 
  
 typedef tipoNodo *pNodo; //Apuntador de nombre pNodo que apunta a un tipoNodo
+
+/* Nombre: Funcion escribir_registros
+
+   Descripcion:	Funcion que crea una lista y 
+   				agrega los elementos por el final.
+
+   Parametros: 
+		P: Apuntador al primer elemento de la lista (apuntador a una estructura tipoNodo). 
+*/
+void escribir_registros(pNodo P)
+{
+ 	tipoNodo nodo;
+ 	char opcion;  
+ 	pNodo Q;
+	FILE *arch;
+
+	arch=fopen("registros.dat","w+b");
+	if(arch != NULL) {
+		Q=P;
+	 	rewind (arch);
+		//fseek(arch, 0L, SEEK_SET);
+		do {
+			printf("%d ", Q->NumCanciones);
+			nodo.NumCanciones = Q->NumCanciones;
+			nodo.siguiente= NULL;
+			fwrite(&nodo,sizeof(tipoNodo),1,arch);  //escritura del registro
+	
+			Q=Q->siguiente;
+		} while (Q != NULL);
+		fclose(arch);
+	} else {
+		fprintf(stderr, "No se pudo abrir el archivo.");
+	}
+}
+
+/* Nombre: Funcion leer_registros
+
+   Descripcion:	Funcion que crea una lista y 
+   				agrega los elementos por el final.
+
+   Parametros: 
+		P: Apuntador al primer elemento de la lista (apuntador a una estructura tipoNodo). 
+*/
+void leer_registros (pNodo *P) {
+  	tipoNodo nodo;
+  	pNodo Q, T;
+  	int tamanio=sizeof(tipoNodo);
+	FILE *arch;
+
+	arch=fopen("registros.dat","r+b");
+	if(arch != NULL) {
+
+		 rewind (arch);
+ 
+	    if (fread (&nodo, tamanio, 1, arch) != 0 ){
+	    	    *P = (pNodo) malloc (sizeof(tipoNodo));
+	    	    (*P)->NumCanciones=nodo.NumCanciones;
+	    		(*P)->siguiente=NULL;
+	    		T=*P;
+	    		printf("Primer elemento: %i\n", nodo.NumCanciones);
+		}
+	   	while (fread (&nodo, tamanio, 1, arch) != 0 ){
+	   	   	Q = (pNodo) malloc (sizeof(tipoNodo));
+	 		Q->NumCanciones=nodo.NumCanciones;
+	        Q->siguiente= NULL;
+	        
+	        T->siguiente=Q;
+	        T=Q;
+	        
+			printf("%i\n", nodo.NumCanciones);
+	   	}
+		fclose(arch);	
+	} else {
+		fprintf(stderr, "No hay archivo de lectura");
+	}
+}
 
 /* Nombre: Funcion creafinal
 
@@ -73,7 +149,7 @@ void creafinal (pNodo *P){
 
     
     (*P)->siguiente=NULL;
-    (*P)->anterior=NULL;
+    //(*P)->anterior=NULL;
     T=*P;
 
 	do {
@@ -100,7 +176,7 @@ void creafinal (pNodo *P){
 		strcpy(Q->TipoTran, transaccion);
         
         Q->siguiente=NULL;
-        Q->anterior=*P;
+        //Q->anterior=*P;
         T->siguiente=Q;
         
         T=Q;
@@ -187,7 +263,7 @@ void insertafinal(pNodo P){
 		strcpy(Q->TipoTran, transaccion);
         
         Q->siguiente=NULL;
-        Q->anterior=T;
+        //Q->anterior=T;
         T->siguiente=Q;
 
     }
@@ -268,7 +344,8 @@ main(){
     	printf ("\n 4) Cancelar la %cltima transacci%cn", 163, 162); //se elimina el ultimo nodo de la lista
     	//printf ("\n 9) Eliminar venta");
     	printf ("\n 5) Buscar una transacci%cn", 162); // se realiza una busqueda recursiva utilizando el numero de refrencia del disco y se imprime el registro
-    	//printf ("\n b) RECORRE ITERATIVO INVERSO");
+    	printf ("\n 6) Guardar la lista en un archivo");
+		printf ("\n 7) Mostrar la lista que se encuentra en el archivo");
     	printf ("\n 0) SALIR");
 
     	printf ("\n\n Seleccione una opcion: ");
@@ -292,6 +369,15 @@ main(){
 				printf("\n\nIngresa el elemento a buscar: ");
 				scanf("%d", &X);
 				buscarrecursivo(P, P, X);
+				break;
+			case 6:
+				printf("\n\nGuardar datos de la lista. ");
+				escribir_registros(P);
+				break;
+			case 7:
+				printf("\n\nCargar datos de la lista. ");
+				printf("\n\nLos elementos de la lista se reemplazarán. ");
+				leer_registros(&P);
 				break;
 			case 0:
 				break;

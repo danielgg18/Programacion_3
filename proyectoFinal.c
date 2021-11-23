@@ -19,9 +19,9 @@
 #define FALSE 0
 
 
-
+//Estructura que contiene la informacion de cada disco (vendido, devuelto, cambiado)
 typedef struct nodo {
-    int NumCanciones;   //Variable de tipo entero
+    int NumCanciones;   //Numero de canciones del disco
     char NomArtista[30];
     char NomAlbum[30];
     char TipoTran[10];

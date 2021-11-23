@@ -240,9 +240,9 @@ main(){
 	char opcion;
 	
 	    do{
-        //funciones pendientes
+        //funciones tentativas
     	system ("cls");
-		printf ("\n\t\t\tControl de transacciones de una tienda de discos musicales\n(Venta, Cambio o Devoluci%cn)\n", 162);
+		printf ("\n\t\t\tRegistro diario de transacciones en una tienda de discos musicales\n(Venta, Cambio o Devoluci%cn)\n", 162);
     	//printf ("\n 1) CREA INICIO");
     	printf ("\n 1) Crear lista con los datos de cada transacci%cn", 162); //Se crea la lista desde el final
     	printf ("\n 2) Ver lista de transacciones"); //Recorre y muestra los elementos de la lista de manera iterativa

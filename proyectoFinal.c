@@ -54,13 +54,19 @@ void escribir_registros(pNodo P)
 	 	rewind (arch);
 		//fseek(arch, 0L, SEEK_SET);
 		do {
-			printf("%d ", Q->NumCanciones);
+			fprintf(arch,"Nombre del album:");
+			strcpy(Q->NomAlbum, nodo.NomAlbum);
+			strcpy(Q->NomArtista, nodo.NomArtista);
 			nodo.NumCanciones = Q->NumCanciones;
+			nodo.Precio = Q->Precio;
+			nodo.Num = Q->Num;
+			strcpy(Q->TipoTran, nodo.TipoTran);
 			nodo.siguiente= NULL;
 			fwrite(&nodo,sizeof(tipoNodo),1,arch);  //escritura del registro
 	
 			Q=Q->siguiente;
 		} while (Q != NULL);
+		fflush(stdin);
 		fclose(arch);
 	} else {
 		fprintf(stderr, "No se pudo abrir el archivo.");

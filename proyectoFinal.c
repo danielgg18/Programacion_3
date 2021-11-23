@@ -96,7 +96,7 @@ void leer_registros (pNodo *P) {
  
 	    if (fread (&nodo, tamanio, 1, arch) != 0 ){
 	    	    *P = (pNodo) malloc (sizeof(tipoNodo));
-	    		gets(nodo.NomAlbum);
+	    		strcpy(nodo.NomAlbum, (*P)->NomAlbum);
 				fflush(stdin);
 				strcpy((*P)->NomArtista, nodo.NomArtista);
 				(*P)->NumCanciones=nodo.NumCanciones;

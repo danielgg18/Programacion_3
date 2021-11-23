@@ -66,7 +66,7 @@ void escribir_registros(pNodo P)
 	
 			Q=Q->siguiente;
 		} while (Q != NULL);
-		fflush(stdin);
+		//fflush(stdin);
 		fclose(arch);
 	} else {
 		fprintf(stderr, "No se pudo abrir el archivo.");
@@ -94,20 +94,30 @@ void leer_registros (pNodo *P) {
  
 	    if (fread (&nodo, tamanio, 1, arch) != 0 ){
 	    	    *P = (pNodo) malloc (sizeof(tipoNodo));
-	    	    (*P)->NumCanciones=nodo.NumCanciones;
+	    	    strcpy((*P)->NomAlbum, nodo.NomAlbum);
+				strcpy((*P)->NomArtista, nodo.NomArtista);
+				(*P)->NumCanciones=nodo.NumCanciones;
+				(*P)->Precio=nodo.Precio;
+				(*P)->Num=nodo.Num;
+				strcpy((*P)->TipoTran, nodo.TipoTran);
 	    		(*P)->siguiente=NULL;
 	    		T=*P;
-	    		printf("Primer elemento: %i\n", nodo.NumCanciones);
+	    		//printf("Primer elemento: %i\n", nodo.NumCanciones);
 		}
 	   	while (fread (&nodo, tamanio, 1, arch) != 0 ){
 	   	   	Q = (pNodo) malloc (sizeof(tipoNodo));
+			strcpy(Q->NomAlbum, nodo.NomAlbum);
+			strcpy(Q->NomArtista, nodo.NomArtista);
 	 		Q->NumCanciones=nodo.NumCanciones;
+			Q->Precio=nodo.Precio;
+			Q->Num=nodo.Num;
+			strcpy(Q->TipoTran, nodo.TipoTran);
 	        Q->siguiente= NULL;
 	        
 	        T->siguiente=Q;
 	        T=Q;
 	        
-			printf("%i\n", nodo.NumCanciones);
+			//printf("%i\n", nodo.NumCanciones);
 	   	}
 		fclose(arch);	
 	} else {

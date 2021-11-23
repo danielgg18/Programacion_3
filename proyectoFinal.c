@@ -272,7 +272,7 @@ main(){
     	printf ("\n 0) SALIR");
 
     	printf ("\n\n Seleccione una opcion: ");
-		scanf ("%c", &opcion);
+		scanf ("%d", &opcion);
 		
 		switch (opcion){
 			case 1:
@@ -293,14 +293,15 @@ main(){
 				scanf("%d", &X);
 				buscarrecursivo(P, P, X);
 				break;
-			case 6:
+			case 0:
 				break;
 			default:
 				printf ("\n Opcion no valida. Intenta de nuevo.\n\n");
 				break;
 		}
 		system("pause");
-	} while (opcion!= 0);
+		system ("cls");
+	} while (opcion);
 	
 	return 0;
 	

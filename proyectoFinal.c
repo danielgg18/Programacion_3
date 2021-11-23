@@ -345,7 +345,7 @@ main(){
     	//printf ("\n 9) Eliminar venta");
     	printf ("\n 5) Buscar una transacci%cn", 162); // se realiza una busqueda recursiva utilizando el numero de refrencia del disco y se imprime el registro
     	printf ("\n 6) Guardar la lista en un archivo");
-		printf ("\n 7) Mostrar la lista que se encuentra en el archivo");
+		printf ("\n 7) Cargar el archivo donde se encuentra la lista");
     	printf ("\n 0) SALIR");
 
     	printf ("\n\n Seleccione una opcion: ");
@@ -376,7 +376,7 @@ main(){
 				break;
 			case 7:
 				printf("\n\nCargar datos de la lista. ");
-				printf("\n\nLos elementos de la lista se reemplazarán. ");
+				//printf("\n\nLos elementos de la lista se reemplazarán. ");
 				leer_registros(&P);
 				break;
 			case 0:

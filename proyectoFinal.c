@@ -44,14 +44,14 @@ typedef tipoNodo *pNodo; //Apuntador de nombre pNodo que apunta a un tipoNodo
 void creafinal (pNodo *P){
 	pNodo Q, T;
 	int opc;
-    char artista[30], album[30];
+    char artista[30], album[30], transaccion[10];
 	
 	system("cls");
     printf("\n\t\t\tCREA FINAL\n");
     
     *P = (pNodo) malloc (sizeof(tipoNodo));
 
-    printf("\n****Ingresa los datos del %clbum****\n",160);
+    printf("\n****Ingresa los datos del disco****\n");
 	printf("Nombre del %clbum: ", 160);
 	fflush(stdin);
 	gets(album);
@@ -66,6 +66,11 @@ void creafinal (pNodo *P){
     scanf("%f",&(*P)->Precio);
 	printf("\nN%cmero de referencia del %clbum: ", 163, 160);
     scanf("%d",&(*P)->Num);
+	printf("Concepto: ");
+	fflush(stdin);
+	gets(transaccion);
+	strcpy((*P)->TipoTran, transaccion);
+
     
     (*P)->siguiente=NULL;
     (*P)->anterior=NULL;
@@ -89,6 +94,10 @@ void creafinal (pNodo *P){
 		scanf("%f",&Q->Precio);
 		printf("\nN%cmero de referencia del %clbum: ", 163, 160);
     	scanf("%d",&Q->Num);
+		printf("Concepto: ");
+		fflush(stdin);
+		gets(transaccion);
+		strcpy(Q->TipoTran, transaccion);
         
         Q->siguiente=NULL;
         Q->anterior=*P;
@@ -124,6 +133,7 @@ void recorreiterativo (pNodo P){
             printf("\nTotal de canciones: %d\n", Q->NumCanciones);
             printf("\nPrecio: $%.2f\n", Q->Precio);
             printf("\nNum de referencia: %d\n", Q->Num);
+			printf("\nTipo de transacci%cn: %d\n", 162, Q->TipoTran);
 
             Q=Q->siguiente;
         } while (Q != NULL);
@@ -141,7 +151,7 @@ void recorreiterativo (pNodo P){
 void insertafinal(pNodo P){
 	
 	pNodo Q, T;
-    char artista[30], album[30];
+    char artista[30], album[30], transaccion[10];
 
     if (P == NULL){
 		printf("\n\tNo existen elementos en la lista\n");
@@ -171,6 +181,10 @@ void insertafinal(pNodo P){
 		scanf("%f",&Q->Precio);
 		printf("\nN%cmero de referencia del %clbum: ", 163, 160);
 		scanf("%d",&Q->Num);
+		printf("Concepto: ");
+		fflush(stdin);
+		gets(transaccion);
+		strcpy(Q->TipoTran, transaccion);
         
         Q->siguiente=NULL;
         Q->anterior=T;
@@ -238,7 +252,7 @@ void buscarrecursivo(pNodo P, pNodo inicio, int X){
 main(){
 	pNodo P = NULL;
 	int X;
-	char opcion;
+	int opcion;
 	
 	    do{
         //funciones tentativas
@@ -253,7 +267,7 @@ main(){
     	//printf ("\n 7) ELIMINA PRIMERO");
     	printf ("\n 4) Cancelar la %cltima transacción", 163); //se elimina el ultimo nodo de la lista
     	//printf ("\n 9) Eliminar venta");
-    	printf ("\n 5) Buscar una transacción"); // se realiza una busqueda recursiva y se imprime el elemento
+    	printf ("\n 5) Buscar una transacción"); // se realiza una busqueda recursiva utilizando el numero de refrencia del disco y se imprime el registro
     	//printf ("\n b) RECORRE ITERATIVO INVERSO");
     	printf ("\n 0) SALIR");
 
@@ -261,32 +275,32 @@ main(){
 		scanf ("%c", &opcion);
 		
 		switch (opcion){
-			case '1':
+			case 1:
 			    creafinal(&P);
 				break;
-			case '2':
+			case 2:
 				recorreiterativo(P);
 				printf("\n");
 	           	break;
-			case '3':
+			case 3:
 				insertafinal(P);
 				break;
-			case '4':
+			case 4:
 				eliminaultimo(&P);
 				break;
-			case '5':
+			case 5:
 				printf("\n\nIngresa el elemento a buscar: ");
 				scanf("%d", &X);
 				buscarrecursivo(P, P, X);
 				break;
-			case '0':
+			case 0:
 				break;
 			default:
 				printf ("\n Opcion no valida. Intenta de nuevo.\n\n");
 				break;
 		}
 		system("pause");
-	} while (opcion!='0');
+	} while (opcion!= 0);
 	
 	return 0;
 	

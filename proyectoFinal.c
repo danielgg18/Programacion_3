@@ -54,15 +54,17 @@ void escribir_registros(pNodo P)
 	 	rewind (arch);
 		//fseek(arch, 0L, SEEK_SET);
 		do {
-			/*fprintf(arch,"Nombre del album:");
+			fprintf(arch,"Nombre del album:");
 			strcpy(Q->NomAlbum, nodo.NomAlbum);
+			fflush(stdin);
 			strcpy(Q->NomArtista, nodo.NomArtista);
+			fflush(stdin);
 			nodo.NumCanciones = Q->NumCanciones;
 			nodo.Precio = Q->Precio;
 			nodo.Num = Q->Num;
 			strcpy(Q->TipoTran, nodo.TipoTran);
-			nodo.siguiente= NULL;*/
-			insertafinal(P);
+			fflush(stdin);
+			nodo.siguiente= NULL;
 			fwrite(&nodo,sizeof(tipoNodo),1,arch);  //escritura del registro
 	
 			Q=Q->siguiente;

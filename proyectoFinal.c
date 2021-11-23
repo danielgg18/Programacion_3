@@ -62,7 +62,7 @@ void escribir_registros(pNodo P)
 			nodo.Num = Q->Num;
 			strcpy(Q->TipoTran, nodo.TipoTran);
 			nodo.siguiente= NULL;*/
-			insertafinal(Q);
+			insertafinal(P);
 			fwrite(&nodo,sizeof(tipoNodo),1,arch);  //escritura del registro
 	
 			Q=Q->siguiente;

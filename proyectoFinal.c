@@ -55,11 +55,14 @@ void escribir_registros(pNodo P)
 		//fseek(arch, 0L, SEEK_SET);
 		do {
 			fprintf(arch,"Nombre del album:");
+			fflush(stdin);
 			strcpy(Q->NomAlbum, nodo.NomAlbum);
+			fflush(stdin);
 			strcpy(Q->NomArtista, nodo.NomArtista);
 			nodo.NumCanciones = Q->NumCanciones;
 			nodo.Precio = Q->Precio;
 			nodo.Num = Q->Num;
+			fflush(stdin);
 			strcpy(Q->TipoTran, nodo.TipoTran);
 			nodo.siguiente= NULL;
 			fwrite(&nodo,sizeof(tipoNodo),1,arch);  //escritura del registro
@@ -94,11 +97,14 @@ void leer_registros (pNodo *P) {
  
 	    if (fread (&nodo, tamanio, 1, arch) != 0 ){
 	    	    *P = (pNodo) malloc (sizeof(tipoNodo));
+				fflush(stdin);
 	    	    strcpy((*P)->NomAlbum, nodo.NomAlbum);
+				fflush(stdin);
 				strcpy((*P)->NomArtista, nodo.NomArtista);
 				(*P)->NumCanciones=nodo.NumCanciones;
 				(*P)->Precio=nodo.Precio;
 				(*P)->Num=nodo.Num;
+				fflush(stdin);
 				strcpy((*P)->TipoTran, nodo.TipoTran);
 	    		(*P)->siguiente=NULL;
 	    		T=*P;
@@ -106,11 +112,14 @@ void leer_registros (pNodo *P) {
 		}
 	   	while (fread (&nodo, tamanio, 1, arch) != 0 ){
 	   	   	Q = (pNodo) malloc (sizeof(tipoNodo));
+			fflush(stdin);
 			strcpy(Q->NomAlbum, nodo.NomAlbum);
+			fflush(stdin);
 			strcpy(Q->NomArtista, nodo.NomArtista);
 	 		Q->NumCanciones=nodo.NumCanciones;
 			Q->Precio=nodo.Precio;
 			Q->Num=nodo.Num;
+			fflush(stdin);
 			strcpy(Q->TipoTran, nodo.TipoTran);
 	        Q->siguiente= NULL;
 	        
@@ -407,4 +416,4 @@ main(){
 	
 	return 0;
 	
-}
+} 

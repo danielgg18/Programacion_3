@@ -21,13 +21,12 @@
 
 //Estructura que contiene la informacion de cada disco (vendido, devuelto, cambiado)
 typedef struct nodo {
-    int NumCanciones;   //Numero de canciones del disco
-    char NomArtista[30];
-    char NomAlbum[30];
-    char TipoTran[12];
-    float Precio;
-    int Num;
-	//struct nodo *anterior; //Apuntador que apunta a una estructura nodo
+    int NumCanciones;  		//Numero de canciones del disco
+    char NomArtista[30];	//Artista del disco
+    char NomAlbum[30];		//Nombre del disco
+    char TipoTran[12];		//Tipo de transaccion (venta, cambio, devolucion)
+    float Precio;			//Precio del disco
+    int Num;				//Numero de transaccion
 	struct nodo *siguiente; //Apuntador que apunta a una estructura nodo   struct nodo *liga; //Apuntador que apunta a una estructura nodo
 } tipoNodo; 
  
@@ -35,9 +34,8 @@ typedef tipoNodo *pNodo; //Apuntador de nombre pNodo que apunta a un tipoNodo
 
 /* Nombre: Funcion escribir_registros
 
-   Descripcion:	Funcion que crea una lista y 
-   				agrega los elementos por el final.
-
+   Descripcion:	Funcion que guarda en el archivo "registros.dat" la lista de
+				los datos ingresados 
    Parametros: 
 		P: Apuntador al primer elemento de la lista (apuntador a una estructura tipoNodo). 
 */
@@ -77,8 +75,10 @@ void escribir_registros(pNodo P)
 
 /* Nombre: Funcion leer_registros
 
-   Descripcion:	Funcion que crea una lista y 
-   				agrega los elementos por el final.
+   Descripcion:	Funcion que carga al programa la
+				lista guardada con anterioridad,
+				para poder mostra, buscar o eliminar
+				las transacciones realizadas
 
    Parametros: 
 		P: Apuntador al primer elemento de la lista (apuntador a una estructura tipoNodo). 
@@ -104,7 +104,7 @@ void leer_registros (pNodo *P) {
 				strcpy((*P)->TipoTran, nodo.TipoTran);
 	    		(*P)->siguiente=NULL;
 	    		T=*P;
-	    		//printf("Primer elemento: %i\n", nodo.NumCanciones);
+	    		
 		}
 	   	while (fread (&nodo, tamanio, 1, arch) != 0 ){
 	   	   	Q = (pNodo) malloc (sizeof(tipoNodo));
@@ -119,8 +119,7 @@ void leer_registros (pNodo *P) {
 	        T->siguiente=Q;
 	        T=Q;
 	        
-			//printf("%i\n", nodo.NumCanciones);
-	   	}
+			
 		fclose(arch);	
 	} else {
 		fprintf(stderr, "No hay archivo de lectura");
@@ -167,7 +166,6 @@ void creafinal (pNodo *P){
 
     
     (*P)->siguiente=NULL;
-    //(*P)->anterior=NULL;
     T=*P;
 
 	do {
@@ -194,7 +192,6 @@ void creafinal (pNodo *P){
 		strcpy(Q->TipoTran, transaccion);
         
         Q->siguiente=NULL;
-        //Q->anterior=*P;
         T->siguiente=Q;
         
         T=Q;
@@ -281,7 +278,6 @@ void insertafinal(pNodo P){
 		strcpy(Q->TipoTran, transaccion);
         
         Q->siguiente=NULL;
-        //Q->anterior=T;
         T->siguiente=Q;
 
     }
@@ -351,14 +347,14 @@ main(){
 	    do{
  
     	system ("cls");
-		printf ("\n\t\t\tRegistro diario de transacciones en una tienda de discos musicales\n(Venta, Cambio o Devoluci%cn)\n", 162);
+		printf ("\n\t\t\tRegistro de transacciones en una tienda de discos musicales\n(Venta, Cambio o Devoluci%cn)\n", 162);
     	printf ("\n 1) Crear lista con los datos de cada transacci%cn", 162); //Se crea la lista desde el final
     	printf ("\n 2) Ver lista de transacciones"); //Recorre y muestra los elementos de la lista de manera iterativa
     	printf ("\n 3) Agregar datos de nueva transacci%cn", 162); // Se crea un nuevo nodo con los datos de la venta y se coloca al final
     	printf ("\n 4) Cancelar la %cltima transacci%cn", 163, 162); //se elimina el ultimo nodo de la lista
     	printf ("\n 5) Buscar una transacci%cn", 162); // se realiza una busqueda recursiva utilizando el numero de refrencia del disco y se imprime el registro
-    	printf ("\n 6) Guardar la lista en un archivo");
-		printf ("\n 7) Cargar el archivo donde se encuentra la lista");
+    	printf ("\n 6) Guardar la lista en un archivo"); //se guarda en un archivo binario la lista de todas las transacciones
+		printf ("\n 7) Cargar el archivo donde se encuentra la lista"); //se carga al programa la lista de transacciones que se encuentran en el archivo "registros.dat"
     	printf ("\n 0) SALIR");
 
     	printf ("\n\n Seleccione una opcion: ");
